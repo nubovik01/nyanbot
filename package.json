@@ -1,0 +1,27 @@
+{
+  "name": "nyanbot",
+  "version": "1.0.0",
+  "description": "Bot for Discord",
+  "main": "./main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nubovik01/nyanbot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Nikita (t.me/qwkz1)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nubovik01/nyanbot/issues"
+  },
+  "homepage": "https://github.com/nubovik01/nyanbot#readme",
+  "dependencies": {
+    "discord.js": "^14.8.0",
+    "dotenv": "^16.3.1"
+  }
+}
