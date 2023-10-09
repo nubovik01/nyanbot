@@ -1,21 +1,25 @@
 module.exports = {
-  OWNER_IDS: ["454314234830913557"],
-  SUPPORT_SERVER: "https://discord.gg/EJc8UC7yhZ", 
+  OWNER_IDS: ["454314234830913557", "754428134941655173"],
+  SUPPORT_SERVER: "https://discord.gg/EJc8UC7yhZ",
+  SUPPORT_SERVER_ID: "457858774099689479",
+  BOT_NAME: "NyanBot",
+  VERSION_MANAGEMENT_SYMBOL: "⌂",
   PREFIX_COMMANDS: {
     DEFAULT_PREFIX: "n.",
-    DEBUG_PREFIX: "nn."
+    DEBUG_PREFIX: "nn.",
+    DEFAULT_PREFIX: !process.env.DEBUG ? "n." : "nn."
   },
   EMBED_COLORS: {
-    BOT_EMBED: "#068ADD",
+    BOT_EMBED: "#F5DE43",
     TRANSPARENT: "#36393F",
     SUCCESS: "#00A56A",
     ERROR: "#D61A3C",
     WARNING: "#F7E919",
   },
   PRESENCE: {
-    ENABLED: true, // Whether or not the bot should update its status
-    STATUS: "online", // The bot's status [online, idle, dnd, invisible]
-    TYPE: "WATCHING", // Status type for the bot [PLAYING | LISTENING | WATCHING | COMPETING]
-    MESSAGE: "v1!", // Your bot status message
+    ENABLED: true,
+    STATUS: "idle", 
+    TYPE: "Watching",
+    MESSAGE: "Nothing to see yet.",
   }
 };

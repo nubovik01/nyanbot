@@ -1,8 +1,5 @@
 module.exports.run = async (client, message, args) => {
-  message.channel.send({ content: "тестики всякие блин ну вот да как бы...." });
-
-  let test = client.commands.get('ping');
-  console.log(test)
+  return message.channel.send({ content: "тестики всякие блин ну вот да как бы...." });
 };
 
 module.exports.help = {

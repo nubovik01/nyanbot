@@ -1,16 +1,12 @@
 const argsSplit = require("../utils/ArgsParser.js");
-const { PREFIX_COMMANDS } = require('@root/config.js');
+const { PREFIX_COMMANDS, OWNER_IDS } = require('../../config.js');
+const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (message, client) => {
   if (message.author.bot) return;
   if (message.channel.type !== 0) return;
 
-  let prefix;
-  if (process.env.DEBUG) {
-    prefix = PREFIX_COMMANDS.DEFAULT_PREFIX;
-  } else {
-    prefix = PREFIX_COMMANDS.DEBUG_PREFIX;
-  };
+  const prefix = PREFIX_COMMANDS.DEFAULT_PREFIX;
 
   if (!message.content.startsWith(prefix)) return;
 
@@ -32,7 +28,7 @@ module.exports.run = async (message, client) => {
 
   message.channel.sendTyping().then(); // печатает...
 
-  // TODO: сделать проверку прав
+  // TODO: сделать проверку прав пользователя и бота
   /*
   if (command.help.rights) {
     for (const right of command.help.rights) {
@@ -59,11 +55,19 @@ module.exports.run = async (message, client) => {
     };
     };
   };
-  
-  if (!message.channel.nsfw && command.help.category == "nsfw") return message.channel.send({ content: `Данная команда доступна только в NSFW-канале.` });
   */
 
-  command.run(client, message, args).catch(e => console.error(`[!] Error while handling command \`${cmd}\`\n`, e));
+  if (command.help.category == "dev" && !OWNER_IDS.includes(message.author.id)) return message.channel.send({
+    content: "Извините, данная команда доступна только разработчикам бота.",
+    files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
+  });
+
+  if (command.help.category == "nsfw" && !message.channel.nsfw) return message.channel.send({
+    content: `Данная команда доступна только в NSFW-канале.`,
+    files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
+  });
+
+  command.run(client, message, args).catch(e => console.error(`Error while handling command \`${cmd}\`\n`, e));
 
   message.channel.sendTyping(); // Остановка печатания.
   return;
