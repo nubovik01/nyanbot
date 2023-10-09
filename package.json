@@ -1,6 +1,6 @@
 {
   "name": "nyanbot",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Bot for Discord",
   "main": "./main.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/nubovik01/nyanbot#readme",
   "dependencies": {
-    "discord.js": "^14.10.2",
+    "discord.js": "^14.11.0",
     "dotenv": "^16.3.1"
   }
 }

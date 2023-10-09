@@ -4,6 +4,7 @@ const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, message, args) => {
   // TODO: добавить подсказки по типу "А вы знали, что командой %s можно %s?"
+  // TODO: сделать динамический список команд
 
   if (args[0]) {
     const command = client.commands.get(args[0]) || client.commands.get(client.commandsAliases.get(args[0]));
@@ -23,6 +24,8 @@ module.exports.run = async (client, message, args) => {
       .setFields([
         { name: "Алиасы", value: `\`${command.help.aliases.join(', ')}\``, inline: true },
         { name: "Категория", value: `тех. ${command.help.category}`, inline: true },
+        // TODO: в будущем добавить сюда кулдауны
+        // TODO: добавить права необходимые для исп. команды в будущем сюда
         { name: "Примеры использования", value: `\`\`\`${PREFIX_COMMANDS.DEFAULT_PREFIX}${command.help.examples.join(`\n${PREFIX_COMMANDS.DEFAULT_PREFIX}`)}\`\`\`` }
       ])
 

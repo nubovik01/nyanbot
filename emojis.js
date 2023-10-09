@@ -1,5 +1,6 @@
 module.exports = {
   DEFAULT: {
-    NOTEPAD: "🗒"
+    NOTEPAD: "🗒",
+    SEARCH_RIGHT: "🔎"
   }
 }
