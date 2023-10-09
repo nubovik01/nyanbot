@@ -8,6 +8,6 @@ module.exports.help = {
     "test"
   ],
   aliases: ['тест'],
-  category: "bot",
+  category: "dev",
   enable: true
 }
