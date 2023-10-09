@@ -4,10 +4,10 @@ module.exports = {
   SUPPORT_SERVER_ID: "457858774099689479",
   BOT_NAME: "NyanBot",
   VERSION_MANAGEMENT_SYMBOL: "⌂",
-  PREFIX_COMMANDS: {
-    DEFAULT_PREFIX: "n.",
-    DEBUG_PREFIX: "nn.",
-    DEFAULT_PREFIX: !process.env.DEBUG ? "n." : "nn."
+  PREFIXES: {
+    DEFAULT: "n.",
+    DEBUG: "nn.",
+    DEFAULT: !process.env.DEBUG ? "n." : "nn."
   },
   EMBED_COLORS: {
     BOT_EMBED: "#F5DE43",

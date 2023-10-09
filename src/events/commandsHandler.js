@@ -1,12 +1,12 @@
 const argsSplit = require("../utils/ArgsParser.js");
-const { PREFIX_COMMANDS, OWNER_IDS } = require('../../config.js');
+const { PREFIXES, OWNER_IDS } = require('../../config.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (message, client) => {
   if (message.author.bot) return;
   if (message.channel.type !== 0) return;
 
-  const prefix = PREFIX_COMMANDS.DEFAULT_PREFIX;
+  const prefix = PREFIXES.DEFAULT;
 
   if (!message.content.startsWith(prefix)) return;
 
@@ -24,7 +24,9 @@ module.exports.run = async (message, client) => {
 
   if (command === undefined) return;
 
-  if (command.help.enable == false && command.help.enable !== undefined) return message.channel.send({ content: `Эта команда отключена, ей воспользоваться не получится.` });
+  if (command.help.enable == false || !command.help.enable) return message.channel.send({
+    content: `Эта команда отключена, ей воспользоваться не получится.`
+  });
 
   message.channel.sendTyping().then(); // печатает...
 

@@ -1,5 +1,5 @@
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { PREFIX_COMMANDS, EMBED_COLORS, OWNER_IDS } = require('../../../config.js');
+const { PREFIXES, EMBED_COLORS, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, message, args) => {
@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 
     const commandInfoHelpEmbed = new EmbedBuilder()
       .setColor(EMBED_COLORS.BOT_EMBED)
-      .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`${PREFIX_COMMANDS.DEFAULT_PREFIX}${command.help.name}\``)
+      .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`${PREFIXES.DEFAULT}${command.help.name}\``)
       // TODO: сделать описания командам в локализацию
       .setDescription(`${command.help.description ? command.help.description : "У этой команды пока нет описания..."}`)
       .setFields([
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
         { name: "Категория", value: `тех. ${command.help.category}`, inline: true },
         // TODO: в будущем добавить сюда кулдауны
         // TODO: добавить права необходимые для исп. команды в будущем сюда
-        { name: "Примеры использования", value: `\`\`\`${PREFIX_COMMANDS.DEFAULT_PREFIX}${command.help.examples.join(`\n${PREFIX_COMMANDS.DEFAULT_PREFIX}`)}\`\`\`` }
+        { name: "Примеры использования", value: `\`\`\`${PREFIXES.DEFAULT}${command.help.examples.join(`\n${PREFIXES.DEFAULT}`)}\`\`\`` }
       ])
 
     return message.channel.send({ embeds: [commandInfoHelpEmbed] });

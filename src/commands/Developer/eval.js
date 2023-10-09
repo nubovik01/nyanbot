@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
-const config = require('../../../config.js');
+const { PREFIXES } = require('../../../config.js');
 
 module.exports.run = async (client, message, args) => {
-  if (!args[0]) return message.channel.send({ content: `Ты не указал код, который требуется выполнить. Пример использования команды: \`${PREFIX_COMMANDS.DEFAULT_PREFIX}help ${this.help.name}\`` });
+  if (!args[0]) return message.channel.send({
+    content: `Ты не указал код, который требуется выполнить. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+  });
 
   return new Promise((async resolver => {
     try {
@@ -12,8 +14,8 @@ module.exports.run = async (client, message, args) => {
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
-      await message.channel.send({ content: `\`\`\`${evaled}\`\`\`` }, { code: "xl" });
-      await message.channel.send({ content: `\`[${evaled.length}]\`` }, { code: "xl" });
+      await message.channel.send({ content: `\`\`\`xl${evaled}\`\`\`` });
+      await message.channel.send({ content: `\`[${evaled.length}]\`` });
 
       console.info(evaled);
       resolver();
