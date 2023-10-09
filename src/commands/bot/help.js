@@ -21,9 +21,9 @@ module.exports.run = async (client, message, args) => {
       // TODO: сделать описания командам в локализацию
       .setDescription(`${command.help.description ? command.help.description : "У этой команды пока нет описания..."}`)
       .setFields([
-        {name: "Алиасы", value: `\`${command.help.aliases.join(', ')}\``, inline: true},
-        {name: "Категория", value: `тех. ${command.help.category}`, inline: true},
-        {name: "Примеры использования", value: `\`\`\`${PREFIX_COMMANDS.DEFAULT_PREFIX}${command.help.examples.join(`\n${PREFIX_COMMANDS.DEFAULT_PREFIX}`)}\`\`\``}
+        { name: "Алиасы", value: `\`${command.help.aliases.join(', ')}\``, inline: true },
+        { name: "Категория", value: `тех. ${command.help.category}`, inline: true },
+        { name: "Примеры использования", value: `\`\`\`${PREFIX_COMMANDS.DEFAULT_PREFIX}${command.help.examples.join(`\n${PREFIX_COMMANDS.DEFAULT_PREFIX}`)}\`\`\`` }
       ])
 
     return message.channel.send({ embeds: [commandInfoHelpEmbed] });

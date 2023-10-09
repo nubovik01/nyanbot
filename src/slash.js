@@ -1,4 +1,5 @@
-// TODO: сделать публикацию slash-команд 
+// TODO: сделать публикацию slash-команд
+// блять я ебал эти все application actions, commands и прочую хуйню, боже мой... в discord.js v14.8.0 сука один способ создавать команды, обновляюсь чуть выше на v14.10.2 - УЖЕ ДРУГОЙ И В ИТОГЕ НИХУЯ НЕ РАБОТАЕТ, СУКААААААА
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -9,8 +10,8 @@ client.on('ready', () => {
 
 client.application.commands.set([
   {
-    name: 'ping',
-    description: 'Get latency of Discord API'
+    name: 'test',
+    description: 'huy test'
   }
 ]);
 
