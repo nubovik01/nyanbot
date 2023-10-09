@@ -2,7 +2,9 @@ node_modules/
 .DS_Store
 src/tests
 .env
+config.js
 .git/
 .vscode/
 *.log
 *.tar.gz
+README.md.secret
