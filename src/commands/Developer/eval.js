@@ -32,16 +32,5 @@ module.exports.help = {
     `eval 5+5`
   ],
   aliases: ['евал', 'эвал', 'выполнитькод'],
-  rights: [{
-    onDiscord: [{
-      bot: [],
-      user: []
-    }],
-    onBot: [{
-      user: [
-        "DeveloperOfBot"
-      ]
-    }]
-  }],
   category: "dev"
 }

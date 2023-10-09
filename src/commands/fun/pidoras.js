@@ -18,17 +18,6 @@ module.exports.help = {
     "pidoras никита"
   ],
   aliases: ['пидорас'],
-  rights: [{
-    onDiscord: [{
-      bot: [],
-      user: []
-    }],
-    onBot: [{
-      user: [
-        "DeveloperOfBot"
-      ]
-    }]
-  }],
   category: "bot",
   enable: true
 }

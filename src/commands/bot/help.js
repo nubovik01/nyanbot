@@ -42,15 +42,6 @@ module.exports.help = {
     "help ping"
   ],
   aliases: ['команды', 'commands'],
-  rights: [{
-    onDiscord: [{
-      bot: [],
-      user: []
-    }],
-    onBot: [{
-      user: []
-    }]
-  }],
   category: "bot",
   enable: true
 };

@@ -8,17 +8,6 @@ module.exports.help = {
     "test"
   ],
   aliases: ['тест'],
-  rights: [{
-    onDiscord: [{
-      bot: [],
-      user: []
-    }],
-    onBot: [{
-      user: [
-        "DeveloperOfBot"
-      ]
-    }]
-  }],
   category: "bot",
   enable: true
 }

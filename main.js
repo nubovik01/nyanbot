@@ -18,6 +18,7 @@ client.events = new Collection();
 // TODO: добавить кулдауны командам и slash-командам
 // TODO: подключить postgresql к боту
 // TODO: добавить боту локализацию, если потребуется
+// TODO: что на счёт англоязычной аудитории?
 // TODO: сделать команду uptime
 // TODO: сделать команду botinfo
 
@@ -72,7 +73,7 @@ for (let folder of slashCommandsFolders) {
 fs.readdir("./src/events/", (err, files) => {
   if (err) console.warn(err);
   let jsfile = files.filter(f => f.split(".").pop() === "js");
-  if (jsfile.length <= 0) return console.error("Not found be once events ");
+  if (jsfile.length <= 0) return console.error("Not found be once events");
 
   jsfile.forEach((f) => {
     let event = require(`./src/events/${f}`);

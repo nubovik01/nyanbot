@@ -14,15 +14,6 @@ module.exports.help = {
     "ping"
   ],
   aliases: ['пинг', 'pong', 'понг', 'времяответа', 'pung', 'pibg', 'pinf', 'pugf'],
-  rights: [{
-    onDiscord: [{
-      bot: [],
-      user: []
-    }],
-    onBot: [{
-      user: []
-    }]
-  }],
   category: "bot",
   enable: true
 }
