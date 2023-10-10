@@ -44,5 +44,6 @@ module.exports.help = {
     `eval 5+5`
   ],
   aliases: ['евал', 'эвал', 'выполнитькод'],
-  category: "dev"
+  category: "dev",
+  enable: true
 };
