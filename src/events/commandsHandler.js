@@ -79,7 +79,12 @@ module.exports.run = async (message, client) => {
     files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
   });
 
-  command.run(client, message, args).catch(e => console.error(`Error while handling command \`${commandName}\`\n`, e));
+  try {
+    await command.run(client, message, args);
+  } catch (error) {
+    console.error(error);
+    return message.channel.send({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." })
+  };
 
   message.channel.sendTyping(); // Остановка печатания.
   return;

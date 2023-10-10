@@ -30,7 +30,12 @@ module.exports.run = async (interaction, client) => {
     content: 'Эта команда отключена, ей воспользоваться не получится.'
   });
 
-  slashCommand.run(client, interaction, slashCommandName, slashSubcommandName, arguments);
+  try {
+    await slashCommand.run(client, interaction, slashCommandName, slashSubcommandName, arguments);
+  } catch (error) {
+    console.error(error);
+    return await interaction.reply({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." })
+  };
 };
 
 module.exports.help = {
