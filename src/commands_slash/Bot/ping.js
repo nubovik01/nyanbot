@@ -11,11 +11,11 @@
 
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, message, args) => {
-  return message.channel.send(`Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}`).then((resultMessage) => {
-    const ping = resultMessage.createdTimestamp - message.createdTimestamp;
+module.exports.run = async (client, interaction, command) => {
+  return await interaction.reply(`Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}`).then((resultMessage) => {
+    const ping = resultMessage.createdTimestamp - interaction.createdTimestamp;
 
-    resultMessage.edit(`Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${Date.now() - message.createdTimestamp} мс, пинг бота — ${ping} мс.`)
+    resultMessage.edit(`Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${Date.now() - interaction.createdTimestamp} мс, пинг бота — ${ping} мс.`)
   });
 };
 

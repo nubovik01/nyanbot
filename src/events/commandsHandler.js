@@ -22,15 +22,15 @@ module.exports.run = async (message, client) => {
   if (!message.content.startsWith(prefix)) return;
 
   let args = argsSplit(message.content.slice(prefix.length).trim());
-  let cmd = message.content.slice(prefix.length).trim().split(' ').shift().toLowerCase();
+  let commandName = message.content.slice(prefix.length).trim().split(' ').shift().toLowerCase();
   let command;
 
-  if (!cmd) return;
+  if (!commandName) return;
 
-  if (client.commands.has(cmd)) {
-    command = client.commands.get(cmd);
-  } else if (client.commandsAliases.has(cmd)) {
-    command = client.commands.get(client.commandsAliases.get(cmd))
+  if (client.commands.has(commandName)) {
+    command = client.commands.get(commandName);
+  } else if (client.commandsAliases.has(commandName)) {
+    command = client.commands.get(client.commandsAliases.get(commandName))
   };
 
   if (command === undefined) return;
@@ -80,7 +80,7 @@ module.exports.run = async (message, client) => {
     files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
   });
 
-  command.run(client, message, args).catch(e => console.error(`Error while handling command \`${cmd}\`\n`, e));
+  command.run(client, message, args).catch(e => console.error(`Error while handling command \`${commandName}\`\n`, e));
 
   message.channel.sendTyping(); // Остановка печатания.
   return;
