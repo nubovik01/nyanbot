@@ -41,7 +41,7 @@ for (let folder of commandsFolders) {
   fs.readdir("./src/commands/" + folder, (err, files) => {
     if (err) console.warn(err);
     let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) return console.error("Not found be once commands :(");
+    if (jsfile.length <= 0) return console.error("Not found be once commands in /%s/ :(", folder);
 
     jsfile.forEach((f) => {
       let props = require(`./src/commands/${folder}/${f}`);
@@ -64,7 +64,7 @@ for (let folder of slashCommandsFolders) {
   fs.readdir("./src/commands_slash/" + folder, (err, files) => {
     if (err) console.warn(err);
     let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) return console.error("Not found be once application (/) commands :(");
+    if (jsfile.length <= 0) return console.error("Not found be once application (/) commands in /%s/ :(", folder);
 
     jsfile.forEach((f) => {
       let props = require(`./src/commands_slash/${folder}/${f}`);
