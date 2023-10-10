@@ -10,14 +10,18 @@
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
 const package = require('../../package.json');
-const { SUPPORT_SERVER_ID, BOT_NAME, VERSION_MANAGEMENT_SYMBOL } = require('../../config.js');
+const { CHANGE_NICKNAME_ON_SUPPORT_SERVER, SUPPORT_SERVER_ID, BOT_NAME, VERSION_MANAGEMENT_SYMBOL } = require('../../config.js');
 
 module.exports.run = async (message, client) => {
-  const guild = client.guilds.cache.get(SUPPORT_SERVER_ID);
+  if (CHANGE_NICKNAME_ON_SUPPORT_SERVER) {
+    const guild = client.guilds.cache.get(SUPPORT_SERVER_ID);
 
-  guild.members.cache.get(client.user.id).setNickname(`${BOT_NAME} (v${package.version}${VERSION_MANAGEMENT_SYMBOL})`);
+    guild.members.cache.get(client.user.id).setNickname(`${BOT_NAME} (v${package.version}${VERSION_MANAGEMENT_SYMBOL})`);
 
-  console.log('Nickname of bot on main Discord-server has been changed.');
+    console.log('Nickname of bot on main Discord-server has been changed.');
+  } else {
+    console.log('Nickname changing is disabled on the main Discord-server.')
+  }
 };
 
 module.exports.help = {
