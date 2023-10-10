@@ -12,7 +12,7 @@
 module.exports.run = async (interaction, client) => {
   if (!interaction.isCommand()) return;
 
-  // thx https://github.com/tailsjs for this line (https://0x0.st/H4Po.jpeg)
+  // thx https://t.me/tailsjs for this line (https://0x0.st/H4Po.jpeg)
   let arguments = interaction.options._hoistedOptions.map(option => option.value);
   let slashCommandName = interaction.commandName.toLowerCase();
   let slashCommand;

@@ -68,8 +68,8 @@ module.exports.run = async (client, message, args) => {
         ]
       },
       {
-        name: 'nsfwtest',
-        description: 'nsfw (ВНИМАНИЕ: эта слеш-команда не работает)',
+        name: 'anal',
+        description: 'Пошлые NSFW картинки и гифки с аналами.',
         nsfw: true
       }
     ]);
