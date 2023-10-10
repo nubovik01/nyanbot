@@ -9,16 +9,17 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-module.exports.run = async (client, message, args) => {
-  return message.channel.send({ content: "тестики всякие блин ну вот да как бы...." });
+module.exports.run = async (client, interaction, command, arguments) => {
+  if (arguments[0] == true) {
+    return await interaction.reply({ content: `${arguments[1]} пидорасы ебаные.` });
+  };
+
+  return await interaction.reply({ content: `${arguments[1]} пидорас ебаный.` });
 };
 
 module.exports.help = {
-  name: "test",
-  examples: [
-    "test"
-  ],
-  aliases: ['тест'],
-  category: "dev",
+  name: "pidoras",
+  aliases: ['пидорас'],
+  category: "fun",
   enable: true
 };

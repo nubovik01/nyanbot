@@ -12,7 +12,9 @@
 module.exports.run = async (interaction, client) => {
   if (!interaction.isCommand()) return;
 
-  const slashCommandName = interaction.commandName.toLowerCase();
+  // thx https://github.com/tailsjs for this line (https://0x0.st/H4Po.jpeg)
+  let arguments = interaction.options._hoistedOptions.map(option => option.value);
+  let slashCommandName = interaction.commandName.toLowerCase();
   let slashCommand;
 
   if (client.slashCommands.has(slashCommandName)) {
@@ -22,7 +24,12 @@ module.exports.run = async (interaction, client) => {
   };
 
   if (slashCommand === undefined) return;
-  slashCommand.run(client, interaction, slashCommandName);
+
+  if (slashCommand.help.enable == false || !slashCommand.help.enable) return interaction.reply({
+    content: `Эта команда отключена, ей воспользоваться не получится.`
+  });
+
+  slashCommand.run(client, interaction, slashCommandName, arguments);
 };
 
 module.exports.help = {

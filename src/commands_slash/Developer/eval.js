@@ -9,36 +9,25 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const { PREFIXES } = require('../../../config.js');
-
-module.exports.run = async (client, message, args) => {
-  if (!args[0]) return message.channel.send({
-    content: `Ты не указал код, который требуется выполнить. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
-  });
-
+module.exports.run = async (client, interaction, command, arguments) => {
   return new Promise((async resolver => {
     try {
-      let evaled = await eval(args.join(" "));
+      let evaled = await eval(arguments[0]);
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
-      await message.channel.send({ content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\`` });
+      await interaction.reply({ content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\`` }, { code: 'xl' });
 
       resolver();
     } catch (error) {
       console.log(error);
-      return await message.channel.send(`**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\``);
+      return await interaction.reply(`**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\``);
     };
   }));
 };
 
 module.exports.help = {
   name: "eval",
-  examples: [
-    `eval process.exit()`,
-    `eval message.channel.send('xd')`,
-    `eval 5+5`
-  ],
   aliases: ['евал', 'эвал', 'выполнитькод'],
   category: "dev",
   enable: true

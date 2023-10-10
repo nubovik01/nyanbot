@@ -14,6 +14,7 @@ const { PREFIXES } = require('../../../config.js');
 module.exports.run = async (client, message, args) => {
   if (!args[0]) return message.channel.send({ content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`` });
 
+  // TODO: локализировать slash-команды
   if (args[0] == "post") {
     client.application.commands.set([
       {
@@ -22,7 +23,15 @@ module.exports.run = async (client, message, args) => {
       },
       {
         name: 'help',
-        description: 'Список команд бота.'
+        description: 'Список команд бота.',
+        options: [
+          {
+            name: 'команда',
+            description: 'Получить справку по команде. К примеру, "ping".',
+            required: false,
+            type: 3
+          }
+        ]
       },
       {
         name: 'ping',
@@ -33,8 +42,14 @@ module.exports.run = async (client, message, args) => {
         description: 'Бот напишет "пидорас ебаный" в отношении того, кого вы упомяните.',
         options: [
           {
+            name: 'множественное_число',
+            description: 'Хотите упомянуть нескольких людей? Да/нет',
+            required: true,
+            type: 5
+          },
+          {
             name: 'имя_человека',
-            description: 'укажите имя человека, которого надо назвать пидорасом.',
+            description: 'Упомянаемый человек, которого требуется назвать пидорасом.',
             required: true,
             type: 3
           }
@@ -45,12 +60,17 @@ module.exports.run = async (client, message, args) => {
         description: 'Slash-команда для разработчиков бота. Позволяет выполнить программный код.',
         options: [
           {
-            name: 'программный_код',
-            description: 'укажите код, который требуется выполнить.',
+            name: 'код',
+            description: 'Програмный код',
             required: true,
             type: 3
           }
         ]
+      },
+      {
+        name: 'nsfwtest',
+        description: 'nsfw (ВНИМАНИЕ: эта слеш-команда не работает)',
+        nsfw: true
       }
     ]);
 
