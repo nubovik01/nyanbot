@@ -28,8 +28,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
     'hneko': () => NSFW.porn.hneko(),
     'tentacle': () => NSFW.porn.tentacle(),
     'yaoi': () => NSFW.porn.yaoi(),
-    'nekofeet': () => NSFW.porn.nekofeet(),
-    'nekopussy': () => NSFW.porn.nekopussy(),
     'nekotits': () => NSFW.porn.nekotits()
   };
 
