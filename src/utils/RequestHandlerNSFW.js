@@ -22,7 +22,7 @@ getImageOnOboobs = async function () {
   return "http://media.oboobs.ru/" + await (await body.json())[0].preview;
 };
 
-getImageOnNekos = async function () {
+getImageOnNekos = async function (type) {
   const body = await fetch("https://nekos.life/api/v2/img/" + type);
   return await (await body.json()).message;
 };
@@ -39,30 +39,22 @@ const PORN_TYPES = {
   'hthigh': () => getImageOnNekobot("hthigh"),
   'boobs': () => getImageOnNekobot("boobs"),
   'hboobs': () => getImageOnNekobot("hboobs"),
-  'boobs2': () => getImageOnOboobs(),
-  'hentaiass': () => getImageOnNekobot("hentaiass"),
   'hentai': () => getImageOnNekobot("hentai"),
+  // 'hentaiass': () => getImageOnNekobot("hentaiass"), // no longer available in API
   'hmidriff': () => getImageOnNekobot("hmidriff"),
   'hass': () => getImageOnNekobot("hass"),
-  'holo': () => getImageOnNekobot("holo"),
-  'neko': () => getImageOnNekobot("neko"),
   'hneko': () => getImageOnNekobot("hneko"),
   'hkitsune': () => getImageOnNekobot("hkitsune"),
-  'kemonomimi': () => getImageOnNekobot("kemonomimi"),
-  'kanna': () => getImageOnNekobot("kanna"),
-  'gah': () => getImageOnNekobot("gah"),
-  'coffee': () => getImageOnNekobot("coffee"),
-  'food': () => getImageOnNekobot("food"),
   'paizuri': () => getImageOnNekobot("paizuri"),
   'tentacle': () => getImageOnNekobot("tentacle"),
   'yaoi': () => getImageOnNekobot("yaoi"),
-  'erokemo': () => getImageOnNekos("erokemo"),
-  'kitsune': () => getImageOnNekos("kitsune"),
+  // 'erokemo': () => getImageOnNekos("erokemo"), // no longer available in API
+  // 'kitsune': () => getImageOnNekos("kitsune"), // no longer available in API
   'lewd': () => getImageOnNekos("lewd"),
-  'nekofeet': () => getImageOnNekos("nekofeet"),
-  'nekopussy': () => getImageOnNekos("nekopussy"),
-  'nekotits': () => getImageOnNekos("tits"),
-  'solo': () => getImageOnNekos("solo"),
+  // 'nekofeet': () => getImageOnNekos("nekofeet"), // no longer available in API
+  // 'nekopussy': () => getImageOnNekos("nekopussy"), // no longer available in API
+  // 'nekotits': () => getImageOnNekos("tits"), // no longer available in API
+  // 'solo': () => getImageOnNekos("solo"), // no longer available in API
   'wallpaper': () => getImageOnNekos("wallpaper"),
 };
 

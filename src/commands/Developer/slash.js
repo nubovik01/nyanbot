@@ -12,6 +12,8 @@
 const { PREFIXES } = require('../../../config.js');
 
 module.exports.run = async (client, message, args) => {
+  // oh, look to this govnocode, lmao....
+
   if (!args[0]) return message.channel.send({ content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`` });
 
   if (args[0] == "post") {
@@ -67,9 +69,71 @@ module.exports.run = async (client, message, args) => {
         ]
       },
       {
-        name: 'anal',
-        description: 'Пошлые NSFW картинки и гифки с аналами.',
-        nsfw: true
+        name: 'nsfw',
+        description: 'NSFW-команды.',
+        nsfw: true,
+        options: [
+          {
+            name: 'anal',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с аналом',
+          },
+          {
+            name: 'hanal',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с аналом из хентая',
+          },
+          {
+            name: 'ass',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с женской жопой'
+          },
+          {
+            name: 'hass',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с женской жопой из хентая'
+          },
+          {
+            name: 'pussy',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с киской'
+          },
+          {
+            name: 'boobs',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами'
+          },
+          {
+            name: 'hboobs',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами из хентая'
+          },
+          {
+            name: 'boobs2',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами с другого API'
+          },
+          {
+            name: 'hentai',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с хентаем'
+          },
+          {
+            name: 'hneko',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с кошкодевочкой из хентая'
+          },
+          {
+            name: 'yaoi',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с яой'
+          },
+          {
+            name: 'tentacle',
+            type: 1,
+            description: 'Бот отправит NSFW фотографию или GIF с тентаклями'
+          }
+        ]
       }
     ]);
 

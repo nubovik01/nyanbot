@@ -9,7 +9,7 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-module.exports.run = async (client, interaction, command, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, arguments) => {
   if (arguments[0] == true) {
     return await interaction.reply({ content: `${arguments[1]} пидорасы ебаные.` });
   };

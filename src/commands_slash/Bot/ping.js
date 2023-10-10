@@ -11,7 +11,7 @@
 
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, interaction, command, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, arguments) => {
   return await interaction.reply(`Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}`).then((resultMessage) => {
     const ping = resultMessage.createdTimestamp - interaction.createdTimestamp;
 
