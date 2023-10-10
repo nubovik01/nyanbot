@@ -41,7 +41,6 @@ module.exports.run = async (message, client) => {
 
   message.channel.sendTyping().then(); // печатает...
 
-  // TODO: сделать проверку прав пользователя и бота
   /*
   if (command.help.rights) {
     for (const right of command.help.rights) {

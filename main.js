@@ -13,7 +13,6 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 
-// TODO: подумать над интентами
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -26,12 +25,6 @@ client.commandsAliases = new Collection();
 client.slashCommands = new Collection();
 client.slashCommandsAliases = new Collection();
 client.events = new Collection();
-// TODO: добавить кулдауны командам и slash-командам
-// TODO: подключить postgresql к боту
-// TODO: добавить боту локализацию, если потребуется
-// TODO: что на счёт англоязычной аудитории?
-// TODO: сделать команду uptime
-// TODO: сделать команду botinfo
 
 const commandsFolders = fs.readdirSync('./src/commands');
 const slashCommandsFolders = fs.readdirSync('./src/commands_slash');
@@ -63,7 +56,6 @@ for (let folder of commandsFolders) {
 };
 
 // Slash-commands Loader
-// TODO: сделать slash-команды
 for (let folder of slashCommandsFolders) {
   fs.readdir("./src/commands_slash/" + folder, (err, files) => {
     if (err) console.warn(err);
@@ -78,7 +70,6 @@ for (let folder of slashCommandsFolders) {
       client.slashCommands.set(props.help.name, props);
       props.help.aliases.forEach(alias => {
         client.slashCommandsAliases.set(alias, props.help.name);
-        // TODO: ..можно делать алиасы слеш-командам? ну, ладно
       });
     });
   });

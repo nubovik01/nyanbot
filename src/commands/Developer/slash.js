@@ -14,7 +14,6 @@ const { PREFIXES } = require('../../../config.js');
 module.exports.run = async (client, message, args) => {
   if (!args[0]) return message.channel.send({ content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`` });
 
-  // TODO: локализировать slash-команды
   if (args[0] == "post") {
     client.application.commands.set([
       {
