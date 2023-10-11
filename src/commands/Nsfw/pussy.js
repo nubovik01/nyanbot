@@ -14,16 +14,16 @@ const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, interaction, command, arguments) => {
   return interaction.reply({
-    files: [new AttachmentBuilder(await NSFW.porn.anal())]
+    files: [new AttachmentBuilder(await NSFW.porn.pussy())]
   });
 };
 
 module.exports.help = {
-  name: "anal",
+  name: "pussy",
   examples: [
-    "anal"
+    "pussy"
   ],
-  aliases: ['nsfwanal', 'анал'],
+  aliases: ['nsfwpussy', 'киска'],
   category: "nsfw",
   enable: true
 };
