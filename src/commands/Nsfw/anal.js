@@ -9,7 +9,7 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const NSFW = require('../../utils/RequestHandlerNSFW.js');
+const NSFW = require('../../handlers/RequestHandlerNSFW.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, interaction, command, arguments) => {
