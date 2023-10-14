@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
       resolver();
     } catch (error) {
       console.log(error);
-      return await message.channel.send(`**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\``);
+      return await message.channel.send({ content: `**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\`` });
     };
   }));
 };

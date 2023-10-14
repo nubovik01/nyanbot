@@ -15,6 +15,9 @@ src/commands/Bot/help.js
 // TODO: добавить права необходимые для исп. команды в будущем в commandInfoHelpEmbed
 // TODO: сделать описания командам в локализацию
 
+src/commands/*/*.js
+// TODO: добавить описания к командам когда будет готова локализация
+
 src/commands/Developer/slash.js
 // TODO: локализировать slash-команды
 

@@ -13,8 +13,6 @@ const { porn } = require('../../handlers/RequestHandlerNSFW.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, interaction, command, subCommand, arguments) => {
-  // oh, look to this govnocode.....
-
   const nsfwSubCommandsList = {
     'anal': () => porn.anal(),
     'hanal': () => porn.hanal(),

@@ -11,10 +11,10 @@
 
 module.exports.run = async (client, interaction, command, subCommand, arguments) => {
   if (arguments[0] == true) {
-    return await interaction.reply({ content: `${arguments[1]} пидорасы ебаные.` });
+    return interaction.reply({ content: `${arguments[1]} пидорасы ебаные.` });
   };
 
-  return await interaction.reply({ content: `${arguments[1]} пидорас ебаный.` });
+  return interaction.reply({ content: `${arguments[1]} пидорас ебаный.` });
 };
 
 module.exports.help = {

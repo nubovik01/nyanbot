@@ -29,9 +29,20 @@ module.exports.run = async (client, message, args) => {
       .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`${PREFIXES.DEFAULT}${command.help.name}\``)
       .setDescription(`${command.help.description ? command.help.description : "У этой команды пока нет описания..."}`)
       .setFields([
-        { name: "Алиасы", value: `\`${command.help.aliases.join(', ')}\``, inline: true },
-        { name: "Категория", value: `тех. ${command.help.category}`, inline: true },
-        { name: "Примеры использования", value: `\`\`\`${PREFIXES.DEFAULT}${command.help.examples.join(`\n${PREFIXES.DEFAULT}`)}\`\`\`` }
+        {
+          name: "Алиасы",
+          value: `\`${command.help.aliases.join(', ')}\``,
+          inline: true
+        },
+        {
+          name: "Категория",
+          value: `тех. ${command.help.category}`,
+          inline: true
+        },
+        {
+          name: "Примеры использования",
+          value: `\`\`\`${PREFIXES.DEFAULT}${command.help.examples.join(`\n${PREFIXES.DEFAULT}`)}\`\`\``
+        }
       ])
 
     return message.channel.send({ embeds: [commandInfoHelpEmbed] });

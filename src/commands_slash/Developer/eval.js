@@ -16,12 +16,12 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
-      await interaction.reply({ content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\`` }, { code: 'xl' });
+      interaction.reply({ content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\`` }, { code: 'xl' });
 
       resolver();
     } catch (error) {
       console.log(error);
-      return await interaction.reply(`**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\``);
+      return interaction.reply(`**\`ERROR\`** \`\`\`xl\n${error}\n\`\`\``);
     };
   }));
 };

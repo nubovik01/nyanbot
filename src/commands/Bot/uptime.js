@@ -14,9 +14,7 @@ const emojis = require('../../../emojis.js');
 module.exports.run = async (client, message, args) => {
   const botStartedTimestamp = `${client.readyTimestamp}`;
 
-  return message.channel.send({
-    content: `Бот был запущен <t:${botStartedTimestamp.slice(0, -3)}:R> ${emojis.DEFAULT.WATCH}`
-  });
+  return message.channel.send({ content: `Бот был запущен <t:${botStartedTimestamp.slice(0, -3)}:R> ${emojis.DEFAULT.WATCH}` });
 };
 
 module.exports.help = {

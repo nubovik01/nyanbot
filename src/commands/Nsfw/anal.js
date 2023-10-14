@@ -12,10 +12,8 @@
 const { porn } = require('../../handlers/RequestHandlerNSFW.js');
 const { AttachmentBuilder } = require('discord.js');
 
-module.exports.run = async (client, interaction, command, arguments) => {
-  return interaction.reply({
-    files: [new AttachmentBuilder(await porn.anal())]
-  });
+module.exports.run = async (client, message, args) => {
+  return message.channel.send({ files: [new AttachmentBuilder(await porn.anal())] });
 };
 
 module.exports.help = {
