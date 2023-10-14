@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
   name: "catsays",
   examples: [
-    "catsays \"я фембойчик :3\""
+    "catsays \"фембойчики :3\""
   ],
   aliases: ['sayscat'],
   category: "fun",
