@@ -134,7 +134,11 @@ module.exports.run = async (client, message, args) => {
             description: 'Бот отправит NSFW фотографию или GIF с тентаклями'
           }
         ]
-      }
+      },
+      {
+        name: 'uptime',
+        description: 'Получить точное время запуска бота.'
+      },
     ]);
 
     return message.channel.send({ content: "Slash-команды обновлены глобально." });
