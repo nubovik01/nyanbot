@@ -9,12 +9,12 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const NSFW = require('../../handlers/RequestHandlerNSFW.js');
+const { porn } = require('../../handlers/RequestHandlerNSFW.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, interaction, command, arguments) => {
   return interaction.reply({
-    files: [new AttachmentBuilder(await NSFW.porn.hentai())]
+    files: [new AttachmentBuilder(await porn.hentai())]
   });
 };
 

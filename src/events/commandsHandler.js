@@ -9,7 +9,7 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const argsSplit = require("../utils/ArgsParser.js");
+const ArgsSplit = require("../utils/CommandsArgsParser.js");
 const { PREFIXES, OWNER_IDS } = require('../../config.js');
 const { AttachmentBuilder } = require('discord.js');
 
@@ -21,7 +21,7 @@ module.exports.run = async (message, client) => {
 
   if (!message.content.startsWith(prefix)) return;
 
-  let args = argsSplit(message.content.slice(prefix.length).trim());
+  let args = ArgsSplit(message.content.slice(prefix.length).trim());
   let commandName = message.content.slice(prefix.length).trim().split(' ').shift().toLowerCase();
   let command;
 

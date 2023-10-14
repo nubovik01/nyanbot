@@ -20,7 +20,7 @@ module.exports.run = async (message, client) => {
       name: PRESENCE.MESSAGE,
       type: ActivityType[PRESENCE.TYPE],
     }],
-    status: PRESENCE.STATUS
+    status: PRESENCE.STATUS,
   });
 };
 

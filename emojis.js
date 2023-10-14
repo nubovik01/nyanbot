@@ -14,4 +14,4 @@ module.exports = {
     NOTEPAD: "🗒",
     SEARCH_RIGHT: "🔎"
   }
-}
+};

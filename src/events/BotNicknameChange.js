@@ -20,8 +20,8 @@ module.exports.run = async (message, client) => {
 
     console.log('Nickname of bot on main Discord-server has been changed.');
   } else {
-    console.log('Nickname changing is disabled on the main Discord-server.')
-  }
+    console.log('Nickname changing is disabled on the main Discord-server.');
+  };
 };
 
 module.exports.help = {

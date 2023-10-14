@@ -9,26 +9,26 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const NSFW = require('../../handlers/RequestHandlerNSFW.js');
+const { porn } = require('../../handlers/RequestHandlerNSFW.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, interaction, command, subCommand, arguments) => {
   // oh, look to this govnocode.....
 
   const nsfwSubCommandsList = {
-    'anal': () => NSFW.porn.anal(),
-    'hanal': () => NSFW.porn.hanal(),
-    'ass': () => NSFW.porn.ass(),
-    'pussy': () => NSFW.porn.pussy(),
-    'boobs': () => NSFW.porn.boobs(),
-    'hboobs': () => NSFW.porn.hboobs(),
-    'boobs2': () => NSFW.porn.boobs2(),
-    'hentai': () => NSFW.porn.hentai(),
-    'hass': () => NSFW.porn.hass(),
-    'hneko': () => NSFW.porn.hneko(),
-    'tentacle': () => NSFW.porn.tentacle(),
-    'yaoi': () => NSFW.porn.yaoi(),
-    'nekotits': () => NSFW.porn.nekotits()
+    'anal': () => porn.anal(),
+    'hanal': () => porn.hanal(),
+    'ass': () => porn.ass(),
+    'pussy': () => porn.pussy(),
+    'boobs': () => porn.boobs(),
+    'hboobs': () => porn.hboobs(),
+    'boobs2': () => porn.boobs2(),
+    'hentai': () => porn.hentai(),
+    'hass': () => porn.hass(),
+    'hneko': () => porn.hneko(),
+    'tentacle': () => porn.tentacle(),
+    'yaoi': () => porn.yaoi(),
+    'nekotits': () => porn.nekotits()
   };
 
   return interaction.reply({ files: [new AttachmentBuilder(await nsfwSubCommandsList[subCommand]())] });
