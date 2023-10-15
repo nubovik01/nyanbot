@@ -23,7 +23,6 @@ getImageOnHttpCat = async function (httpCode) {
   ];
 
   const selectedCode = httpCodes.includes(httpCode) ? httpCode : httpCodes[Math.floor(Math.random() * httpCodes.length)];
-  console.log("https://http.cat/" + selectedCode + ".jpg")
   return "https://http.cat/" + selectedCode + ".jpg";
 };
 
