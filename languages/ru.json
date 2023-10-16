@@ -23,7 +23,7 @@
       "description": "Позволяет выполнить программный код не выходя из дискорда. Да, это тот самый легендарный калькулятор нубовика :)"
     },
     "slash": {
-      "description": ""
+      "description": "Данная команда позволяет глобально обновить все slash-команды бота."
     },
     "catsays": {
       "description": ""
@@ -32,10 +32,10 @@
       "description": ""
     },
     "httpcat": {
-      "description": ""
+      "description": "Скидывает котика с соответствующим http кодом ошибки :)"
     },
     "pidoras": {
-      "description": ""
+      "description": "Бот назовёт пидорасом любого, кого вы попросите."
     },
     "anal": {
       "description": ""
@@ -71,6 +71,18 @@
       "description": ""
     },
     "yaoi": {
+      "description": ""
+    },
+    "bunny": {
+      "description": ""
+    },
+    "dog": {
+      "description": ""
+    },
+    "duck": {
+      "description": ""
+    },
+    "lizard": {
       "description": ""
     }
   }
