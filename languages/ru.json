@@ -1,0 +1,77 @@
+{
+  "hello": "Привет, это первая фраза в этой локализации на русском языке!",
+  "general": {
+    "categories": {
+      "bot": "Бот",
+      "developer": "Разработчики",
+      "fun": "Развлекательные",
+      "nsfw": "NSFW"
+    }
+  },
+  "command": {
+    "indev1": "В разработке",
+    "help": {
+      "description": "Команда помощи. Содержит список всех команд бота. Получить справку по определённой команде можно отправив `%shelp <команда>`"
+    },
+    "ping": {
+      "description": "Позволяет получить текущую задержку бота, websocket и Discord API."
+    },
+    "uptime": {
+      "description": "Команда покажет точное время и дату когда последний раз запускался бот."
+    },
+    "eval": {
+      "description": "Позволяет выполнить программный код не выходя из дискорда. Да, это тот самый легендарный калькулятор нубовика :)"
+    },
+    "slash": {
+      "description": ""
+    },
+    "catsays": {
+      "description": ""
+    },
+    "dream": {
+      "description": ""
+    },
+    "httpcat": {
+      "description": ""
+    },
+    "pidoras": {
+      "description": ""
+    },
+    "anal": {
+      "description": ""
+    },
+    "ass": {
+      "description": ""
+    },
+    "boobs": {
+      "description": ""
+    },
+    "hanal": {
+      "description": ""
+    },
+    "hass": {
+      "description": ""
+    },
+    "hboobs": {
+      "description": ""
+    },
+    "hentai": {
+      "description": ""
+    },
+    "hneko": {
+      "description": ""
+    },
+    "nekotits": {
+      "description": ""
+    },
+    "pussy": {
+      "description": ""
+    },
+    "tentacle": {
+      "description": ""
+    },
+    "yaoi": {
+      "description": ""
+    }
+  }
+}

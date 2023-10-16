@@ -23,3 +23,6 @@ src/commands/Developer/slash.js
 
 src/events/CommandsHandler.js
 // TODO: сделать проверку прав пользователя и бота
+
+src/handlers/RequestHandlerNSFW.js
+// TODO: добавить гейскую порнушку и фембойчиков :3

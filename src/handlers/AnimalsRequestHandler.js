@@ -26,8 +26,37 @@ getImageOnHttpCat = async function (httpCode) {
   return "https://http.cat/" + selectedCode + ".jpg";
 };
 
+getRandomImageOfBunny = async function () {
+  const body = await fetch("https://api.bunnies.io/v2/loop/random/?media=gif");
+  return await (await body.json()).media.gif;
+};
+
+getRandomImageOfDog = async function () {
+  const body = await fetch("https://random.dog/woof.json");
+  return await (await body.json()).url;
+};
+
+getRandomImageOfDuck = async function () {
+  const body = await fetch("https://random-d.uk/api/v1/random?type=png");
+  return await (await body.json()).url;
+};
+
+getRandomImageOfLizard = async function () {
+  const body = await fetch("https://nekos.life/api/lizard");
+  return await (await body.json()).url;
+ };
+
+getImageOnSMA = async function (animal) { // SMA - some-random-api[.ml]
+  const body = await fetch("https://some-random-api.ml/img/" + animal);
+  return await (await body.json()).link;
+};
+
 const ANIMAL_TYPES = {
-  'httpCat': (httpCode) => getImageOnHttpCat(httpCode)
+  'httpCat': (httpCode) => getImageOnHttpCat(httpCode),
+  'bunny': () => getRandomImageOfBunny(),
+  'dog': () => getRandomImageOfDog(),
+  'duck': () => getRandomImageOfDuck(),
+  'lizard': () => getRandomImageOfLizard()
 };
 
 module.exports.animals = ANIMAL_TYPES;
