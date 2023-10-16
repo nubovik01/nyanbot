@@ -136,6 +136,45 @@ module.exports.run = async (client, message, args) => {
         ]
       },
       {
+        name: 'animals',
+        description: 'Команды с картинками или GIF животных',
+        options: [
+          {
+            name: 'httpcat',
+            type: 1,
+            description: 'Картинка с котиком и случайным http кодом ошибки',
+            options: [
+              {
+                name: 'код',
+                description: 'Вы можете указать свой http код ошибки. К примеру, 404.',
+                required: false,
+                type: 3
+              }
+            ]
+          },
+          {
+            name: 'bunny',
+            type: 1,
+            description: 'Картинка или GIF с случайным кроликом',
+          },
+          {
+            name: 'dog',
+            type: 1,
+            description: 'Картинка или GIF с случайной собакой',
+          },
+          {
+            name: 'duck',
+            type: 1,
+            description: 'Картинка или GIF с случайной уткой',
+          },
+          {
+            name: 'lizard',
+            type: 1,
+            description: 'Картинка или GIF с случайной змеёй',
+          }
+        ]
+      },
+      {
         name: 'uptime',
         description: 'Получить точное время запуска бота.'
       },
