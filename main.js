@@ -28,9 +28,7 @@ client.events = new Collection();
 const commandsFolders = fs.readdirSync('./src/commands');
 const slashCommandsFolders = fs.readdirSync('./src/commands_slash');
 
-process.on('unhandledRejection', error => {
-  console.error(error);
-});
+process.on('unhandledRejection', error => console.error(error));
 
 // Commands Loader
 for (let folder of commandsFolders) {
