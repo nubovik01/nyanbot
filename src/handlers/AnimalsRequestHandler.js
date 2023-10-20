@@ -46,11 +46,6 @@ getRandomImageOfLizard = async function () {
   return await (await body.json()).url;
  };
 
-getImageOnSMA = async function (animal) { // SMA - some-random-api[.ml]
-  const body = await fetch("https://some-random-api.ml/img/" + animal);
-  return await (await body.json()).link;
-};
-
 const ANIMAL_TYPES = {
   'httpCat': (httpCode) => getImageOnHttpCat(httpCode),
   'bunny': () => getRandomImageOfBunny(),
