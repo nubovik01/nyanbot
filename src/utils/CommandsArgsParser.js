@@ -9,11 +9,10 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-module.exports = (cmd = "") => {
-  if (cmd.indexOf(" ") === -1) return [];
-  cmd = cmd.substring(cmd.indexOf(" ") + 1);
-  let args = cmd.match(/("( *[^ "]* *)*")+|([^ "]+)+/gmiu);
-  if (args == null) return [];
-  args = args.map(arg => arg.split("\"").join(""));
-  return args;
+module.exports = (command = "") => {
+  if (command.indexOf(" ") === -1) return [];
+  command = command.substring(command.indexOf(" ") + 1);
+  const arguments = command.match(/("( *[^ "]* *)*")+|([^ "]+)+/gmiu);
+  if (arguments == null) return [];
+  return arguments.map(argument => argument.split("\"").join(""));
 };
