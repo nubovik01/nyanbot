@@ -12,10 +12,12 @@
 const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, interaction, command, subCommand, arguments) => {
-  return interaction.reply(`Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}`).then((resultMessage) => {
+  return interaction.reply({ content: `Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}` }).then((resultMessage) => {
     const ping = resultMessage.createdTimestamp - interaction.createdTimestamp;
 
-    resultMessage.edit(`Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${Date.now() - interaction.createdTimestamp} мс, пинг бота — ${ping} мс.`)
+    resultMessage.edit({
+      content: `Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${Date.now() - interaction.createdTimestamp} мс, пинг бота — ${ping} мс.`
+    });
   });
 };
 
