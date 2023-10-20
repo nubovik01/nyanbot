@@ -53,7 +53,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
 module.exports.help = {
   name: "help",
-  aliases: ['команды', 'commands'],
   category: "bot",
   enable: true
 };

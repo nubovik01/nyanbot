@@ -23,7 +23,6 @@ const client = new Client({
 client.commands = new Collection();
 client.commandsAliases = new Collection();
 client.slashCommands = new Collection();
-client.slashCommandsAliases = new Collection();
 client.events = new Collection();
 
 const commandsFolders = fs.readdirSync('./src/commands');
@@ -68,9 +67,6 @@ for (let folder of slashCommandsFolders) {
       console.info(`/commands_slash/${folder}/${f} ✅`);
 
       client.slashCommands.set(props.help.name, props);
-      props.help.aliases.forEach(alias => {
-        client.slashCommandsAliases.set(alias, props.help.name);
-      });
     });
   });
 };

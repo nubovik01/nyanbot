@@ -19,7 +19,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
 module.exports.help = {
   name: "pidoras",
-  aliases: ['пидорас'],
   category: "fun",
   enable: true
 };

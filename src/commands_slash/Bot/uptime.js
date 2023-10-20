@@ -21,7 +21,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
 module.exports.help = {
   name: "uptime",
-  aliases: ['аптайм'],
   category: "bot",
   enable: true
 };

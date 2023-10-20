@@ -21,7 +21,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
 module.exports.help = {
   name: "ping",
-  aliases: ['пинг', 'pong', 'понг', 'времяответа', 'pung', 'pibg', 'pinf', 'pugf'],
   category: "bot",
   enable: true
 };

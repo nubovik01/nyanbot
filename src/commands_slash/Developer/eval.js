@@ -28,7 +28,6 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
 
 module.exports.help = {
   name: "eval",
-  aliases: ['евал', 'эвал', 'выполнитькод'],
   category: "dev",
   enable: true
 };
