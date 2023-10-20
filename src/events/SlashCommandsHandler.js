@@ -27,14 +27,14 @@ module.exports.run = async (interaction, client) => {
   if (slashCommand === undefined || !slashCommand) return;
 
   if (slashCommand.help.enable === false || !slashCommand.help.enable) return interaction.reply({
-    content: 'Эта команда отключена, ей воспользоваться не получится.'
+    content: 'Эта slash-команда отключена, ей воспользоваться не получится.'
   });
 
   try {
     await slashCommand.run(client, interaction, slashCommandName, slashSubcommandName, arguments);
   } catch (error) {
     console.error(error);
-    return await interaction.reply({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." })
+    return await interaction.reply({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." });
   };
 };
 

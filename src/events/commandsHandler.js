@@ -39,7 +39,7 @@ module.exports.run = async (message, client) => {
     content: `Эта команда отключена, ей воспользоваться не получится.`
   });
 
-  message.channel.sendTyping().then(); // печатает...
+  message.channel.sendTyping().then();
 
   /*
   if (command.help.rights) {
@@ -83,10 +83,10 @@ module.exports.run = async (message, client) => {
     await command.run(client, message, args);
   } catch (error) {
     console.error(error);
-    return message.channel.send({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." })
+    return message.channel.send({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." });
   };
 
-  message.channel.sendTyping(); // Остановка печатания.
+  message.channel.sendTyping();
   return;
 };
 

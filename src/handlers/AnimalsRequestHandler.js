@@ -44,7 +44,7 @@ getRandomImageOfDuck = async function () {
 getRandomImageOfLizard = async function () {
   const body = await fetch("https://nekos.life/api/lizard");
   return await (await body.json()).url;
- };
+};
 
 const ANIMAL_TYPES = {
   'httpCat': (httpCode) => getImageOnHttpCat(httpCode),
