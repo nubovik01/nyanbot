@@ -20,7 +20,9 @@ module.exports.run = async (client, message, args) => {
 
   const fileURL = message.attachments.first().url;
 
-  if (!/(.jpeg|.jpg|.png)/.test(fileURL)) return message.channel.send({ content: "Поддерживаются только изображения в формате .JPG, .PNG и .JPEG." });
+  if (!/(.jpeg|.jpg|.png)/.test(fileURL)) return message.channel.send({
+    content: "Поддерживаются только изображения в формате .JPG, .PNG и .JPEG."
+  });
 
   const canvas = Canvas.createCanvas(1150, 1500);
 

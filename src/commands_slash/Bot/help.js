@@ -17,7 +17,9 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
   if (arguments[0]) {
     const command = client.commands.get(arguments[0]) || client.commands.get(client.commandsAliases.get(arguments[0]));
 
-    if ((command == 'undefined' || command == undefined || command == NaN)) return interaction.reply({ content: "Мявк! Кажется, такая команда не существует." });
+    if ((command == 'undefined' || command == undefined || command == NaN)) return interaction.reply({
+      content: "Мявк! Кажется, такая команда не существует."
+    });
 
     if (command.help.category == "dev" && !OWNER_IDS.includes(interaction.user.id)) return interaction.reply({
       content: "Извините, получить справку об этой команде могут только разработчики бота.",

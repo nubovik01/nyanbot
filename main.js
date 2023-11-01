@@ -84,7 +84,7 @@ fs.readdir("./src/events/", (err, files) => {
       client.on(event.help.name, (...args) => event.run(...args, client));
     } else {
       console.info(`event ${f} is disabled.`);
-    }
+    };
   });
 });
 
