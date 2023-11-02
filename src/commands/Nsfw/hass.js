@@ -22,6 +22,7 @@ module.exports.help = {
     "hass"
   ],
   aliases: ['nsfwhass', 'жопа', 'пизда', 'хентайжопа', 'хентайпизда', 'хентжопа', 'хентпизда'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

@@ -23,6 +23,7 @@ module.exports.help = {
     "httpcat 404"
   ],
   aliases: ['cathttp', 'хттпкот', 'хттпкошка'],
+  rights: [],
   category: "fun",
   enable: true
 };

@@ -22,6 +22,7 @@ module.exports.help = {
     "lizard"
   ],
   aliases: ['змея'],
+  rights: [],
   category: "fun",
   enable: true
 };

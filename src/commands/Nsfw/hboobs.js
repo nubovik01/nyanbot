@@ -22,6 +22,7 @@ module.exports.help = {
     "hboobs"
   ],
   aliases: ['nsfwhboobs', 'хентайсиськи', 'nsfwhentaiboobs', 'хентсиськи'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

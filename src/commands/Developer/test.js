@@ -9,20 +9,17 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const { porn } = require('../../handlers/RequestHandlerNSFW.js');
-const { AttachmentBuilder } = require('discord.js');
-
 module.exports.run = async (client, message, args) => {
-  return message.channel.send({ files: [new AttachmentBuilder(await porn.tentacle())] });
+  return message.channel.send(":white_check_mark:");
 };
 
 module.exports.help = {
-  name: "tentacle",
+  name: "test",
   examples: [
-    "tentacle"
+    `test`
   ],
-  aliases: ['nsfwtentacle', 'тентакли'],
-  rights: [],
-  category: "nsfw",
+  aliases: ['тест'],
+  rights: ['BanMembers'],
+  category: "dev",
   enable: true
 };

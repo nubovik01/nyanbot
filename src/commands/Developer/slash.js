@@ -197,6 +197,7 @@ module.exports.help = {
     "slash remove"
   ],
   aliases: ['globalslash', 'слэш'],
+  rights: [],
   category: "dev",
   enable: true
 };

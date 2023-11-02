@@ -22,6 +22,7 @@ module.exports.help = {
     "nekotits"
   ],
   aliases: ['nsfwnekotits', 'сиськикошкодевочки', 'титькикошкодевочки', 'некотитс'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

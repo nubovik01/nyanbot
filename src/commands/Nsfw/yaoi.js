@@ -22,6 +22,7 @@ module.exports.help = {
     "yaoi"
   ],
   aliases: ['nsfwyaoi', 'яой'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

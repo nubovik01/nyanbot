@@ -27,6 +27,7 @@ module.exports.help = {
     "ping"
   ],
   aliases: ['пинг', 'pong', 'понг', 'времяответа', 'pung', 'pibg', 'pinf', 'pugf'],
+  rights: [],
   category: "bot",
   enable: true
 };

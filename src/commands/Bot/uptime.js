@@ -23,6 +23,7 @@ module.exports.help = {
     "uptime"
   ],
   aliases: ['аптайм'],
+  rights: [],
   category: "bot",
   enable: true
 };

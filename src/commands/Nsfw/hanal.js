@@ -22,6 +22,7 @@ module.exports.help = {
     "hanal"
   ],
   aliases: ['nsfwhanal', 'ханал', 'хентайанал', 'nsfwhentaianal', 'хентанал'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

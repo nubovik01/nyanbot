@@ -22,6 +22,7 @@ module.exports.help = {
     "duck"
   ],
   aliases: ['утка'],
+  rights: [],
   category: "fun",
   enable: true
 };

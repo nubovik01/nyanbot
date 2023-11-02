@@ -22,6 +22,7 @@ module.exports.help = {
     "pussy"
   ],
   aliases: ['nsfwpussy', 'киска'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

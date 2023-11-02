@@ -22,6 +22,7 @@ module.exports.help = {
     "hentai"
   ],
   aliases: ['nsfwhentai', 'хентай', 'хент'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

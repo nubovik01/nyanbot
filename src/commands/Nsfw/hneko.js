@@ -22,6 +22,7 @@ module.exports.help = {
     "hneko"
   ],
   aliases: ['nsfwhneko', 'хентайнеко', 'хентнеко', 'хентайкошкодевочка', 'хенткошкодевочка'],
+  rights: [],
   category: "nsfw",
   enable: true
 };

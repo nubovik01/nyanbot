@@ -60,6 +60,7 @@ module.exports.help = {
     "help ping"
   ],
   aliases: ['команды', 'commands'],
+  rights: [],
   category: "bot",
   enable: true
 };

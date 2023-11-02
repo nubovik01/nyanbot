@@ -11,7 +11,7 @@
 
 const ArgsSplit = require("../utils/CommandsArgsParser.js");
 const { PREFIXES, OWNER_IDS } = require('../../config.js');
-const { AttachmentBuilder } = require('discord.js');
+const { AttachmentBuilder, PermissionsBitField } = require('discord.js');
 
 module.exports.run = async (message, client) => {
   if (message.author.bot) return;
@@ -41,33 +41,15 @@ module.exports.run = async (message, client) => {
 
   message.channel.sendTyping().then();
 
-  /*
-  if (command.help.rights) {
-    for (const right of command.help.rights) {
-    for (const onBot of right.onBot) {
-      if (onBot.user.length > 0) {
-      for (const right of onBot.user) {
-        if (right == "DeveloperOfBot" && !message.author.id !== process.env.OWNER_ID) return message.channel.send({ content: `Эта команда доступна только разработчикам бота.` });
-      };
-      };
-    };
-  
-    for (const onDiscord of right.onDiscord) {
-      if (onDiscord.bot.length > 0) {
-      for (const right of onDiscord.bot) {
-        if (!message.guild.members.cache.get(bot.user.id).permissions.has([right])) return message.channel.send({ content: `У бота нет права \`${right}\`, командой воспользоваться не получится.` });
-      };
-      };
-  
-      if (onDiscord.user.length > 0) {
-      for (const right of onDiscord.user) {
-        if (!message.member.permissions.has(Discord.PermissionsBitField.Flags[right])) return message.channel.send({ content: `У Вас нет права \`${right}, командой воспользоваться не получится.\`` });
-      };
-      };
-    };
-    };
+  for (const right of command.help.rights) {
+    if (!message.guild.members.cache.get(client.user.id).permissions.has(right)) return message.channel.send({
+      content: `У бота нет права **${right}**, требующегося для полноценной функциональности бота. Пожалуйста, выдайте данное право боту в настройках ролей, либо попросите администратора сервера это сделать.`
+    });
+
+    if (!message.member.permissions.has(PermissionsBitField.Flags[right])) return message.channel.send({
+      content: `У вас нет права **${right}**, необходимого для использования этой команды.`
+    });
   };
-  */
 
   if (command.help.category == "dev" && !OWNER_IDS.includes(message.author.id)) return message.channel.send({
     content: "Извините, данная команда доступна только разработчикам бота.",

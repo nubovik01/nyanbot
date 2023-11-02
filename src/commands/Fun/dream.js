@@ -48,6 +48,7 @@ module.exports.help = {
     "dream [фотография]"
   ],
   aliases: ['снившийсячеловек'],
+  rights: [],
   category: "fun",
   enable: true
 };

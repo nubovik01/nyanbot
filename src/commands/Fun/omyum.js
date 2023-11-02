@@ -9,23 +9,19 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const { PREFIXES } = require('../../../config.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
-  if (!args[0]) return message.channel.send({
-    content: `Вы не указали текст, который требуется наложить на картинку с котиком. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
-  });
-
-  return message.channel.send({ files: [new AttachmentBuilder(`https://cataas.com/cat/says/${args.join(" ")}.jpg`)] });
+  const link = "https://cdn.discordapp.com/attachments/754717585534353519/1137801194421620798/0dded03a6843cba5babaa68805deef48.jpg";
+  return message.channel.send({ files: [new AttachmentBuilder(link)] });
 };
 
 module.exports.help = {
-  name: "catsays",
+  name: "omyum",
   examples: [
-    "catsays \"фембойчики :3\""
+    "omyum"
   ],
-  aliases: ['sayscat'],
+  aliases: ['amnyam', 'амням'],
   rights: [],
   category: "fun",
   enable: true

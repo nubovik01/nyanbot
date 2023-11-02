@@ -33,6 +33,7 @@ module.exports.help = {
     "pidoras никита"
   ],
   aliases: ['пидорас'],
+  rights: [],
   category: "fun",
   enable: true
 };
