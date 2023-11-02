@@ -32,58 +32,68 @@ process.on('unhandledRejection', error => console.error(error));
 
 // Commands Loader
 for (let folder of commandsFolders) {
-  fs.readdir("./src/commands/" + folder, (err, files) => {
-    if (err) console.warn(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) return console.error("Not found be once commands in /%s/ :(", folder);
+  fs.readdir("./src/commands/" + folder, (error, files) => {
+    if (error) console.warn(error);
 
-    jsfile.forEach((f) => {
-      let props = require(`./src/commands/${folder}/${f}`);
+    const file = files.filter(f => f.split(".").pop() === "js");
+    if (file.length <= 0) return console.error("Not found be once commands in /%s/ :(", folder);
 
-      client.commands.set(props.help.name, props);
-      props.help.aliases.forEach(alias => {
-        client.commandsAliases.set(alias, props.help.name);
-      });
+    file.forEach((fileName) => {
+      const properties = require(`./src/commands/${folder}/${fileName}`);
 
-      console.info(`/commands/${folder}/${f} ✅`);
+      if (properties.help.enable) {
+        client.commands.set(properties.help.name, properties);
 
-      // bc.bot.commands[`${props.help.category}`].push(props.help.name); // from FlameOut
+        properties.help.aliases.forEach(alias => {
+          client.commandsAliases.set(alias, properties.help.name);
+        });
+
+        console.log(`/commands/${folder}/${fileName} ✅`);
+      } else {
+        console.log(`/commands/${folder}/${fileName} ❌`);
+      };
     });
   });
 };
 
 // Slash-commands Loader
 for (let folder of slashCommandsFolders) {
-  fs.readdir("./src/commands_slash/" + folder, (err, files) => {
-    if (err) console.warn(err);
-    let jsfile = files.filter(f => f.split(".").pop() === "js");
-    if (jsfile.length <= 0) return console.error("Not found be once application (/) commands in /%s/ :(", folder);
+  fs.readdir("./src/commands_slash/" + folder, (error, files) => {
+    if (error) console.warn(error);
 
-    jsfile.forEach((f) => {
-      let props = require(`./src/commands_slash/${folder}/${f}`);
+    const file = files.filter(f => f.split(".").pop() === "js");
+    if (file.length <= 0) return console.error("Not found be once application (/) commands in /%s/ :(", folder);
 
-      console.info(`/commands_slash/${folder}/${f} ✅`);
+    file.forEach((fileName) => {
+      const properties = require(`./src/commands_slash/${folder}/${fileName}`);
 
-      client.slashCommands.set(props.help.name, props);
+      if (properties.help.enable) {
+        client.slashCommands.set(properties.help.name, properties);
+
+        console.log(`/commands_slash/${folder}/${fileName} ✅`);
+      } else {
+        console.log(`/commands_slash/${folder}/${fileName} ❌`);
+      };
     });
   });
 };
 
 // Events Loader
-fs.readdir("./src/events/", (err, files) => {
-  if (err) console.warn(err);
-  let jsfile = files.filter(f => f.split(".").pop() === "js");
-  if (jsfile.length <= 0) return console.error("Not found be once events");
+fs.readdir("./src/events/", (error, files) => {
+  if (error) console.warn(error);
 
-  jsfile.forEach((f) => {
-    let event = require(`./src/events/${f}`);
+  const file = files.filter(f => f.split(".").pop() === "js");
+  if (file.length <= 0) return console.error("Not found be once events :(");
+
+  file.forEach((fileName) => {
+    const event = require(`./src/events/${fileName}`);
 
     if (event.help.enabled) {
-      console.info(`/events/${f} ✅`);
-
       client.on(event.help.name, (...args) => event.run(...args, client));
+
+      console.log(`/events/${fileName} ✅`);
     } else {
-      console.info(`event ${f} is disabled.`);
+      console.log(`/events/${fileName} ❌`);
     };
   });
 });

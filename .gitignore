@@ -8,3 +8,8 @@ config.js
 *.log
 *.tar.gz
 README.md.secret
+/shelf/
+/workspace.xml
+/dataSources.local.xml
+.idea/dataSources
+/httpRequests/
