@@ -61,6 +61,18 @@ module.exports.run = async (client, message, args) => {
         ]
       },
       {
+        name: 'catsays',
+        description: 'Отправит картинку с котиком и с вашей надписью',
+        options: [
+          {
+            name: 'надпись',
+            description: 'Текст, который будет наложен на картинку',
+            required: true,
+            type: 3
+          }
+        ]
+      },
+      {
         name: 'eval',
         description: 'Slash-команда для разработчиков бота. Позволяет выполнить программный код.',
         options: [
