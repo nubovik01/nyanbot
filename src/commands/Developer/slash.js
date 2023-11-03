@@ -23,6 +23,10 @@ module.exports.run = async (client, message, args) => {
         description: 'Slash-команда для разработчиков бота. Используется для тестов.'
       },
       {
+        name: 'omyum',
+        description: 'Скидывает картинку с милым амнямом'
+      },
+      {
         name: 'help',
         description: 'Список команд бота.',
         options: [
@@ -188,6 +192,8 @@ module.exports.run = async (client, message, args) => {
 
     return message.channel.send({ content: "Slash-команды удалены глобально." });
   };
+
+  return message.channel.send({ content: `Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``});
 };
 
 module.exports.help = {
