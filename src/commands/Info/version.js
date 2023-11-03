@@ -9,19 +9,26 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
+const { version, dependencies } = require('../../../package.json');
+const { VERSION_MANAGEMENT_SYMBOL } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, message, args) => {
-  return message.channel.send(emojis.DEFAULT.CHECK_MARK);
+  const botVersion = `v${version}${VERSION_MANAGEMENT_SYMBOL}`;
+  const discordJsVersion = `v${dependencies['discord.js'].substring(1)}`;
+
+  return message.channel.send({
+    content: `${botVersion} | ${process.version} ${emojis.CUSTOM.NODEJS} | ${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
+  });
 };
 
 module.exports.help = {
-  name: "test",
+  name: "version",
   examples: [
-    `test`
+    "version"
   ],
-  aliases: ['тест', 't1'],
-  rights: ['BanMembers'],
-  category: "dev",
+  aliases: ['версия'],
+  rights: [],
+  category: "info",
   enable: true
 };

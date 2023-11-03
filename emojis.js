@@ -13,6 +13,14 @@ module.exports = {
   DEFAULT: {
     NOTEPAD: "🗒",
     SEARCH_RIGHT: "🔎",
-    WATCH: "⌚"
+    WATCH: "⌚",
+    CHECK_MARK: "✅",
+    CROSS: "❌"
+  },
+  CUSTOM: {
+    NODEJS: "<:NodeJS:927319476058325002>",
+    NODEJS_ID: "927319476058325002",
+    DISCORD: "<:discord:905529230526394399>",
+    DISCORD_ID: "905529230526394399"
   }
 };
