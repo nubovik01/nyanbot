@@ -15,7 +15,7 @@ const { AttachmentBuilder, PermissionsBitField } = require('discord.js');
 
 module.exports.run = async (message, client) => {
   if (message.author.bot) return;
-  if (message.channel.type !== 0) return;
+  if (!'0', '2'.includes(message.channel.type)) return;
 
   const prefix = PREFIXES.DEFAULT;
 
