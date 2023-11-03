@@ -61,18 +61,6 @@ module.exports.run = async (client, message, args) => {
         ]
       },
       {
-        name: 'catsays',
-        description: 'Отправит картинку с котиком и с вашей надписью',
-        options: [
-          {
-            name: 'надпись',
-            description: 'Текст, который будет наложен на картинку',
-            required: true,
-            type: 3
-          }
-        ]
-      },
-      {
         name: 'eval',
         description: 'Slash-команда для разработчиков бота. Позволяет выполнить программный код.',
         options: [
@@ -164,6 +152,19 @@ module.exports.run = async (client, message, args) => {
                 name: 'код',
                 description: 'Вы можете указать свой http код ошибки. К примеру, 404.',
                 required: false,
+                type: 3
+              }
+            ]
+          },
+          {
+            name: 'catsays',
+            type: 1,
+            description: 'Отправит картинку с котиком и с вашей надписью',
+            options: [
+              {
+                name: 'надпись',
+                description: 'Текст, который будет наложен на картинку',
+                required: true,
                 type: 3
               }
             ]

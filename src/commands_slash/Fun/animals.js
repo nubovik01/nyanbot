@@ -18,7 +18,8 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
     'bunny': () => animals.bunny(),
     'dog': () => animals.dog(),
     'duck': () => animals.duck(),
-    'lizard': () => animals.lizard()
+    'lizard': () => animals.lizard(),
+    'catsays': () => animals.catsays(arguments[0])
   };
 
   return interaction.reply({ files: [new AttachmentBuilder(await animalsSubCommandList[subCommand]())] });

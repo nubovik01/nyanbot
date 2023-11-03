@@ -54,7 +54,8 @@ const ANIMAL_TYPES = {
   'bunny': () => getRandomImageOfBunny(),
   'dog': () => getRandomImageOfDog(),
   'duck': () => getRandomImageOfDuck(),
-  'lizard': () => getRandomImageOfLizard()
+  'lizard': () => getRandomImageOfLizard(),
+  'catsays': (text) => `https://cataas.com/cat/says/${text}.jpg`
 };
 
 module.exports.animals = ANIMAL_TYPES;
