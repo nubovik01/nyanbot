@@ -9,6 +9,8 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
+const { WHITELIST, OWNER_IDS } = require('../../config.js');
+
 module.exports.run = async (interaction, client) => {
   if (!interaction.isCommand()) return;
 
@@ -25,6 +27,15 @@ module.exports.run = async (interaction, client) => {
   };
 
   if (slashCommand === undefined || !slashCommand) return;
+
+  if (WHITELIST.ENABLED) {
+    const isUserOnWhitelist = OWNER_IDS.includes(interaction.user.id) || WHITELIST.USERS_IDS.includes(interaction.user.id);
+    const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(interaction.member.guild.id);
+
+    if (!(isUserOnWhitelist || isServerOnWhitelist)) return interaction.reply({
+      content: "Бот в разработке. Вы не имеете права его использовать, так как не находитесь в белом списке."
+    });
+  };
 
   if (slashCommand.help.enable === false || !slashCommand.help.enable) return interaction.reply({
     content: 'Эта slash-команда отключена, ей воспользоваться не получится.'

@@ -18,7 +18,7 @@ module.exports.help = {
   examples: [
     `test`
   ],
-  aliases: ['тест'],
+  aliases: ['тест', 't1'],
   rights: ['BanMembers'],
   category: "dev",
   enable: true

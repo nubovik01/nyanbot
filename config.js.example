@@ -10,7 +10,12 @@
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
 module.exports = {
-  OWNER_IDS: ["ID_OF_YOUR_ACCOUNT_IN_DISCORD"],
+  OWNER_IDS: ["ID_OF_YOUR_ACCOUNT"],
+  WHITELIST: {
+    ENABLED: true,
+    USERS_IDS: [ALLOVED_USERS_IDS]
+    SERVERS_IDS: [ALLOVED_SERVERS_IDS]
+  },
   SUPPORT_SERVER: "LINK_ON_SERVER",
   SUPPORT_SERVER_ID: "ID_OF_SUPPORT_SERVER",
   BOT_NAME: "NAME_OF_BOT",

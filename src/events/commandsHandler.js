@@ -10,7 +10,7 @@
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
 const ArgsSplit = require("../utils/CommandsArgsParser.js");
-const { PREFIXES, OWNER_IDS } = require('../../config.js');
+const { PREFIXES, OWNER_IDS, WHITELIST } = require('../../config.js');
 const { AttachmentBuilder, PermissionsBitField } = require('discord.js');
 
 module.exports.run = async (message, client) => {
@@ -34,6 +34,15 @@ module.exports.run = async (message, client) => {
   };
 
   if (command === undefined) return;
+
+  if (WHITELIST.ENABLED && command.help.name != 'whitelist') {
+    const isUserOnWhitelist = OWNER_IDS.includes(message.author.id) || WHITELIST.USERS_IDS.includes(message.author.id);
+    const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(message.guild.id);
+
+    if (!(isUserOnWhitelist || isServerOnWhitelist)) return message.channel.send({
+      content: "Бот в разработке. Вы не имеете права его использовать, так как не находитесь в белом списке."
+    });
+  };
 
   if (command.help.enable == false || !command.help.enable) return message.channel.send({
     content: `Эта команда отключена, ей воспользоваться не получится.`
