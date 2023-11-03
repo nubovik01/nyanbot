@@ -14,9 +14,10 @@ const emojis = require('../../../emojis.js');
 module.exports.run = async (client, message, args) => {
   return message.channel.send({ content: `Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}` }).then((resultMessage) => {
     const ping = resultMessage.createdTimestamp - message.createdTimestamp;
+    const messageSendingTime = Date.now() - message.createdTimestamp;
 
     resultMessage.edit({
-      content: `Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${Date.now() - message.createdTimestamp} мс, пинг бота — ${ping} мс.`
+      content: `Время задержки Websocket — ${client.ws.ping} мс, отправка сообщения заняла ${messageSendingTime} мс, пинг бота — ${ping} мс.`
     });
   });
 };
