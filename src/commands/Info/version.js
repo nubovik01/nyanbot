@@ -14,11 +14,11 @@ const { VERSION_MANAGEMENT_SYMBOL } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, message, args) => {
-  const botVersion = `v${version}${VERSION_MANAGEMENT_SYMBOL}`;
-  const discordJsVersion = `v${dependencies['discord.js'].substring(1)}`;
+  const botVersion = `${version}${VERSION_MANAGEMENT_SYMBOL}`;
+  const discordJsVersion = dependencies['discord.js'].substring(1);
 
   return message.channel.send({
-    content: `${botVersion} | ${process.version} ${emojis.CUSTOM.NODEJS} | ${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
+    content: `v${botVersion} | ${process.version} ${emojis.CUSTOM.NODEJS} | v${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
   });
 };
 
