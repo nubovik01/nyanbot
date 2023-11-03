@@ -40,7 +40,6 @@ const PORN_TYPES = {
   'boobs': () => getImageOnNekobot("boobs"),
   'hboobs': () => getImageOnNekobot("hboobs"),
   'hentai': () => getImageOnNekobot("hentai"),
-  // 'hentaiass': () => getImageOnNekobot("hentaiass"), // no longer available in API
   'hmidriff': () => getImageOnNekobot("hmidriff"),
   'hass': () => getImageOnNekobot("hass"),
   'hneko': () => getImageOnNekobot("hneko"),
@@ -48,13 +47,7 @@ const PORN_TYPES = {
   'paizuri': () => getImageOnNekobot("paizuri"),
   'tentacle': () => getImageOnNekobot("tentacle"),
   'yaoi': () => getImageOnNekobot("yaoi"),
-  // 'erokemo': () => getImageOnNekos("erokemo"), // no longer available in API
-  // 'kitsune': () => getImageOnNekos("kitsune"), // no longer available in API
   'lewd': () => getImageOnNekos("lewd"),
-  // 'nekofeet': () => getImageOnNekos("nekofeet"), // no longer available in API
-  // 'nekopussy': () => getImageOnNekos("nekopussy"), // no longer available in API
-  // 'nekotits': () => getImageOnNekos("tits"), // no longer available in API
-  // 'solo': () => getImageOnNekos("solo"), // no longer available in API
   'wallpaper': () => getImageOnNekos("wallpaper"),
 };
 
