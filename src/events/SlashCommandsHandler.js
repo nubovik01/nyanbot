@@ -28,7 +28,7 @@ module.exports.run = async (interaction, client) => {
 
   if (slashCommand === undefined || !slashCommand) return;
 
-  if (WHITELIST.ENABLED) {
+  if (WHITELIST.ENABLED && slashCommand.help.name != 'whitelist') {
     const isUserOnWhitelist = OWNER_IDS.includes(interaction.user.id) || WHITELIST.USERS_IDS.includes(interaction.user.id);
     const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(interaction.member.guild.id);
 

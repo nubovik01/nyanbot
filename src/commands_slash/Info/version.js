@@ -9,14 +9,21 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const { AttachmentBuilder } = require('discord.js');
+const { version, dependencies } = require('../../../package.json');
+const { VERSION_MANAGEMENT_SYMBOL } = require('../../../config.js');
+const emojis = require('../../../emojis.js');
 
 module.exports.run = async (client, interaction, command, subCommand, arguments) => {
-  return interaction.reply({ files: [new AttachmentBuilder(`https://cataas.com/cat/says/${arguments[0]}.jpg`)] });
+  const botVersion = `${version}${VERSION_MANAGEMENT_SYMBOL}`;
+  const discordJsVersion = dependencies['discord.js'].substring(1);
+
+  return interaction.reply({
+    content: `v${botVersion} | ${process.version} ${emojis.CUSTOM.NODEJS} | v${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
+  });
 };
 
 module.exports.help = {
-  name: "catsays",
-  category: "fun",
+  name: "version",
+  category: "info",
   enable: true
 };

@@ -195,6 +195,10 @@ module.exports.run = async (client, message, args) => {
         name: 'uptime',
         description: 'Получить точное время запуска бота.'
       },
+      {
+        name: 'version',
+        description: 'Получить текущую версию бота, node.js и discord.js.'
+      },
     ]);
 
     return message.channel.send({ content: "Slash-команды обновлены глобально." });
