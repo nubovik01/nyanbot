@@ -7,7 +7,7 @@
 //
 // Code is licensed under MIT unless otherwise specified.
 // https://opensource.org/license/mit/
-// (c) t.me/qwkrtezzz (https://github.com/nubovik01)
+// (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { version } = require('../../package.json');
 const { CHANGE_NICKNAME_ON_SUPPORT_SERVER, SUPPORT_SERVER_ID, BOT_NAME, VERSION_MANAGEMENT_SYMBOL } = require('../../config.js');
