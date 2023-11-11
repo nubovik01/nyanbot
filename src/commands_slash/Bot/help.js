@@ -26,14 +26,23 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
       files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
     });
 
+    const commandDescription = command.help.description;
+
+    const commandRights = command.help.rights;
+
     const commandInfoHelpEmbed = new EmbedBuilder()
       .setColor(EMBED_COLORS.BOT_EMBED)
       .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`${PREFIXES.DEFAULT}${command.help.name}\``)
-      .setDescription(`${command.help.description ? command.help.description : "У этой команды пока нет описания..."}`)
+      .setDescription(`${commandDescription ? commandDescription : "У этой команды пока нет описания..."}`)
       .setFields([
         {
-          name: "Алиасы",
+          name: "Алиасы " + emojis.DEFAULT.MINIDISC,
           value: `\`${command.help.aliases.join(', ')}\``,
+          inline: false
+        },
+        {
+          name: "Необходимые права " + emojis.DEFAULT.POLICE,
+          value: `\`${commandRights.length ? commandRights : 'отсутствуют.'}\``,
           inline: true
         },
         {
@@ -43,9 +52,10 @@ module.exports.run = async (client, interaction, command, subCommand, arguments)
         },
         {
           name: "Примеры использования",
-          value: `\`\`\`${PREFIXES.DEFAULT}${command.help.examples.join(`\n${PREFIXES.DEFAULT}`)}\`\`\``
+          value: `\`\`\`${PREFIXES.DEFAULT}${command.help.examples.join(`\n${PREFIXES.DEFAULT}`)}\`\`\``,
+          inline: false
         }
-      ])
+      ]);
 
     return interaction.reply({ embeds: [commandInfoHelpEmbed] });
   };
