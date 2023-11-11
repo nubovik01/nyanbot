@@ -56,8 +56,7 @@
       "UseExternalSounds": "Использование внешние звуки в SoundBoard",
       "ViewCreatorMonetizationAnalytics": "Просмотр аналитики монетизации овнера",
       "ManageGuildExpressions": "Управление автомодом сервера",
-      "SendVoiceMessages": "Отправка голосовых сообщений",
-      "DeveloperOfBot": "Разработчик NyanBot"
+      "SendVoiceMessages": "Отправка голосовых сообщений"
     }
   },
   "important": {
