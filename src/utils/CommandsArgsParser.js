@@ -7,7 +7,7 @@
 //
 // Code is licensed under MIT unless otherwise specified.
 // https://opensource.org/license/mit/
-// (c) t.me/qwkrtezzz (https://github.com/nubovik01)
+// (c) qwkrtezzz (https://github.com/nubovik01)
 
 module.exports = (command = "") => {
   if (command.indexOf(" ") === -1) return [];
