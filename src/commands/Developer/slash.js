@@ -9,7 +9,7 @@
 // https://opensource.org/license/mit/
 // (c) t.me/qwkrtezzz (https://github.com/nubovik01)
 
-const { PREFIXES } = require('../../../config.js');
+const { PREFIXES, BOT_NAME } = require('../../../config.js');
 
 module.exports.run = async (client, message, args) => {
   if (!args[0]) return message.channel.send({
@@ -68,6 +68,24 @@ module.exports.run = async (client, message, args) => {
             name: 'код',
             description: 'Програмный код',
             required: true,
+            type: 3
+          }
+        ]
+      },
+      {
+        name: 'whitelist',
+        description: 'Проверить, находится ли сервер или пользователь в белом списке ' + BOT_NAME,
+        options: [
+          {
+            name: 'id-сервера',
+            description: 'Укажите ID сервера, информацию по которому требуется узнать',
+            required: false,
+            type: 3
+          },
+          {
+            name: 'id-пользователя',
+            description: 'Укажите ID пользователя, информацию по которому требуется узнать',
+            required: false,
             type: 3
           }
         ]
@@ -210,7 +228,7 @@ module.exports.run = async (client, message, args) => {
     return message.channel.send({ content: "Slash-команды удалены глобально." });
   };
 
-  return message.channel.send({ content: `Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``});
+  return message.channel.send({ content: `Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`` });
 };
 
 module.exports.help = {
