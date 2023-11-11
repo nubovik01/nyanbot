@@ -7,7 +7,7 @@
 //
 // Code is licensed under MIT unless otherwise specified.
 // https://opensource.org/license/mit/
-// (c) t.me/qwkrtezzz (https://github.com/nubovik01)
+// (c) qwkrtezzz (https://github.com/nubovik01)
 
 // thx https://t.me/tailsjs for partial help with the code <3
 
