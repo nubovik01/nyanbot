@@ -9,7 +9,6 @@ src/commands/Bot/help.js
 // TODO: добавить подсказки по типу "А вы знали, что командой %s можно %s?"
 // TODO: сделать динамический список команд
 // TODO: в будущем добавить в fields к commandInfoHelpEmbed инфу о кулдаунах
-// TODO: добавить права необходимые для исп. команды в будущем в commandInfoHelpEmbed
 
 src/commands/Developer/slash.js
 // TODO: локализировать slash-команды

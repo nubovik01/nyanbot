@@ -15,7 +15,9 @@ module.exports = {
     SEARCH_RIGHT: "🔎",
     WATCH: "⌚",
     CHECK_MARK: "✅",
-    CROSS: "❌"
+    CROSS: "❌",
+    POLICE: "🚔",
+    MINIDISC: "💽"
   },
   CUSTOM: {
     NODEJS: "<:NodeJS:927319476058325002>",
