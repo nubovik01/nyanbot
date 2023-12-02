@@ -44,7 +44,7 @@ module.exports.run = async (client, message, db, args) => {
         },
         {
           name: "Необходимые права " + emojis.DEFAULT.POLICE,
-          value: `\`${commandRights.length ? commandRights : 'отсутствуют.'}\``,
+          value: `\`${commandRights.length ? commandRights : 'отсутствуют'}\``,
           inline: true
         },
         {
