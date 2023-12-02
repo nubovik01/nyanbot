@@ -17,12 +17,18 @@ module.exports = {
     CHECK_MARK: "✅",
     CROSS: "❌",
     POLICE: "🚔",
-    MINIDISC: "💽"
+    MINIDISC: "💽",
+    ROBOT: "🤖",
+    COMPUTER: "💻",
+    ROFL: "🤣",
+    NSFW: "🔞"
   },
   CUSTOM: {
     NODEJS: "<:NodeJS:927319476058325002>",
     NODEJS_ID: "927319476058325002",
     DISCORD: "<:discord:905529230526394399>",
-    DISCORD_ID: "905529230526394399"
+    DISCORD_ID: "905529230526394399",
+    TELEGRAM: "<:telegram:699217206319382558>",
+    TELEGRAM_ID: "699217206319382558"
   }
 };
