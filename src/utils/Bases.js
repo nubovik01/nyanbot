@@ -73,14 +73,19 @@ class BaseConnection {
     return result.rows[0];
   };
 
+  async getVersion() {
+    const result = await this.query("SELECT version();");
+    return result.rows[0].version;
+  };
+
   async getUsersCount() {
-    let result = await this.query("SELECT count(id) FROM users");
+    const result = await this.query("SELECT count(id) FROM users");
     return result.rows[0].count;
   };
 
   async getPing() {
-    let timestamp = Date.now();
-    let result = await this.query("SELECT CURRENT_TIMESTAMP;");
+    const timestamp = Date.now();
+    const result = await this.query("SELECT CURRENT_TIMESTAMP;");
     return result.rows[0].current_timestamp.getTime() - timestamp;
   };
 }

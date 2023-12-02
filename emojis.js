@@ -21,7 +21,8 @@ module.exports = {
     ROBOT: "🤖",
     COMPUTER: "💻",
     ROFL: "🤣",
-    NSFW: "🔞"
+    NSFW: "🔞",
+    CAT: "🐱"
   },
   CUSTOM: {
     NODEJS: "<:NodeJS:927319476058325002>",

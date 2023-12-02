@@ -1,6 +1,6 @@
 {
   "name": "nyanbot",
-  "version": "0.4.8.b16",
+  "version": "0.4.8.b17",
   "description": "Bot for Discord",
   "main": "./main.js",
   "scripts": {
