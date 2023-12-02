@@ -16,7 +16,7 @@ module.exports.run = async (client, message, db, args) => {
     content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
   });
 
-  if (args[0] == "post") {
+  if (["post", "update", "обновить", "опубликовать"].includes(args[0])) {
     client.application.commands.set([
       {
         name: 'test',
@@ -82,6 +82,18 @@ module.exports.run = async (client, message, db, args) => {
             required: false,
             type: 3
           },
+          {
+            name: 'id-пользователя',
+            description: 'Укажите ID пользователя, информацию по которому требуется узнать',
+            required: false,
+            type: 3
+          }
+        ]
+      },
+      {
+        name: 'statistic',
+        description: 'Некоторая информация и статистика о определённом пользователе из БД',
+        options: [
           {
             name: 'id-пользователя',
             description: 'Укажите ID пользователя, информацию по которому требуется узнать',
@@ -222,7 +234,7 @@ module.exports.run = async (client, message, db, args) => {
     return message.channel.send({ content: "Slash-команды обновлены глобально." });
   };
 
-  if (args[0] == "remove") {
+  if (["remove", "удалить"].includes(args[0])) {
     bot.application.commands.set([]);
 
     return message.channel.send({ content: "Slash-команды удалены глобально." });
