@@ -25,8 +25,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     'hass': () => porn.hass(),
     'hneko': () => porn.hneko(),
     'tentacle': () => porn.tentacle(),
-    'yaoi': () => porn.yaoi(),
-    'nekotits': () => porn.nekotits()
+    'yaoi': () => porn.yaoi()
   };
 
   return interaction.reply({ files: [new AttachmentBuilder(await nsfwSubCommandsList[subCommand]())] });
