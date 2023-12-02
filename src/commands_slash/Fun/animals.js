@@ -12,7 +12,7 @@
 const { animals } = require('../../handlers/AnimalsRequestHandler.js');
 const { AttachmentBuilder } = require('discord.js');
 
-module.exports.run = async (client, interaction, command, subCommand, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   const animalsSubCommandList = {
     'httpcat': () => animals.httpCat(arguments[0]),
     'bunny': () => animals.bunny(),

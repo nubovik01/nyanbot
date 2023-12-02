@@ -10,6 +10,7 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { WHITELIST, OWNER_IDS } = require('../../config.js');
+const Base = require('../utils/Bases.js');
 
 module.exports.run = async (interaction, client) => {
   if (!interaction.isCommand()) return;
@@ -28,8 +29,13 @@ module.exports.run = async (interaction, client) => {
 
   if (slashCommand === undefined || !slashCommand) return;
 
+  const userId = interaction.user.id;
+
+  const db = new Base();
+  const user = await db.getUser(userId);
+
   if (WHITELIST.ENABLED && slashCommand.help.name != 'whitelist') {
-    const isUserOnWhitelist = OWNER_IDS.includes(interaction.user.id) || WHITELIST.USERS_IDS.includes(interaction.user.id);
+    const isUserOnWhitelist = OWNER_IDS.includes(userId) || WHITELIST.USERS_IDS.includes(userId);
     const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(interaction.member.guild.id);
 
     if (!(isUserOnWhitelist || isServerOnWhitelist)) return interaction.reply({
@@ -42,7 +48,9 @@ module.exports.run = async (interaction, client) => {
   });
 
   try {
-    await slashCommand.run(client, interaction, slashCommandName, slashSubcommandName, arguments);
+    await slashCommand.run(client, interaction, slashCommandName, slashSubcommandName, db, arguments);
+    await user.updateSlashCommandsUsages(1);
+    await user.setDateOfLastUsedSlashCommand(Math.floor(Date.now() / 1000));
   } catch (error) {
     console.error(error);
     return await interaction.reply({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." });

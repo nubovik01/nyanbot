@@ -13,7 +13,7 @@ const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const { PREFIXES, EMBED_COLORS, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, interaction, command, subCommand, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   if (arguments[0]) {
     const command = client.commands.get(arguments[0]) || client.commands.get(client.commandsAliases.get(arguments[0]));
 

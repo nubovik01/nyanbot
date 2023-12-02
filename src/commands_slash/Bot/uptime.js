@@ -11,7 +11,7 @@
 
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, interaction, command, subCommand, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   const botStartedTimestamp = `${client.readyTimestamp}`;
   return interaction.reply({ content: `Бот был запущен <t:${botStartedTimestamp.slice(0, -3)}:R> ${emojis.DEFAULT.WATCH}` });
 };

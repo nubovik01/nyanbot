@@ -11,7 +11,7 @@
 
 const { AttachmentBuilder } = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   const link = "https://cdn.discordapp.com/attachments/754717585534353519/1137801194421620798/0dded03a6843cba5babaa68805deef48.jpg";
   return message.channel.send({ files: [new AttachmentBuilder(link)] });
 };

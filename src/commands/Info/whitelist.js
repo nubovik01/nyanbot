@@ -12,7 +12,7 @@
 const { BOT_NAME, WHITELIST, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   if ((args[0] || args[1]) && !OWNER_IDS.includes(message.author.id)) return message.channel.send({
     content: "Извините, но просмотр по параметрам доступен только разработчикам бота."
   });

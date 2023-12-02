@@ -11,7 +11,7 @@
 
 const { PREFIXES } = require('../../../config.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
     content: `Ты не указал код, который требуется выполнить. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
   });

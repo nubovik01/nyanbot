@@ -11,7 +11,7 @@
 
 const { PREFIXES, BOT_NAME } = require('../../../config.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
     content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
   });

@@ -12,7 +12,7 @@
 const { animals } = require('../../handlers/AnimalsRequestHandler.js');
 const { AttachmentBuilder } = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   message.channel.send({ files: [new AttachmentBuilder(await animals.lizard())] });
 };
 

@@ -12,10 +12,10 @@
 const ArgsSplit = require("../utils/CommandsArgsParser.js");
 const { PREFIXES, OWNER_IDS, WHITELIST } = require('../../config.js');
 const { AttachmentBuilder, PermissionsBitField } = require('discord.js');
+const Base = require('../utils/Bases.js');
 
 module.exports.run = async (message, client) => {
-  if (message.author.bot) return;
-  if (!'0', '2'.includes(message.channel.type)) return;
+  if (!'0', '2'.includes(message.channel.type) || message.author.bot) return;
 
   const prefix = PREFIXES.DEFAULT;
 
@@ -35,8 +35,13 @@ module.exports.run = async (message, client) => {
 
   if (command === undefined) return;
 
+  const userId = message.author.id;
+
+  const db = new Base();
+  const user = await db.getUser(userId);
+
   if (WHITELIST.ENABLED && command.help.name != 'whitelist') {
-    const isUserOnWhitelist = OWNER_IDS.includes(message.author.id) || WHITELIST.USERS_IDS.includes(message.author.id);
+    const isUserOnWhitelist = OWNER_IDS.includes(userId) || WHITELIST.USERS_IDS.includes(userId);
     const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(message.guild.id);
 
     if (!(isUserOnWhitelist || isServerOnWhitelist)) return message.channel.send({
@@ -60,7 +65,7 @@ module.exports.run = async (message, client) => {
     });
   };
 
-  if (command.help.category == "dev" && !OWNER_IDS.includes(message.author.id)) return message.channel.send({
+  if (command.help.category == "dev" && !OWNER_IDS.includes(userId)) return message.channel.send({
     content: "Извините, данная команда доступна только разработчикам бота.",
     files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
   });
@@ -71,7 +76,9 @@ module.exports.run = async (message, client) => {
   });
 
   try {
-    await command.run(client, message, args);
+    await command.run(client, message, db, args);
+    await user.updateCommandsUsages(1);
+    await user.setDateOfLastUsedCommand(Math.floor(Date.now() / 1000));
   } catch (error) {
     console.error(error);
     return message.channel.send({ content: "Произошла непредвиденная ошибка! Попробуйте ещё раз." });

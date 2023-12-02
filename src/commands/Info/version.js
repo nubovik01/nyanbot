@@ -13,7 +13,7 @@ const { version, dependencies } = require('../../../package.json');
 const { VERSION_MANAGEMENT_SYMBOL } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   const botVersion = `${version}${VERSION_MANAGEMENT_SYMBOL}`;
   const discordJsVersion = dependencies['discord.js'].substring(1);
 

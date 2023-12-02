@@ -11,7 +11,7 @@
 
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   return message.channel.send({ content: `Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}` }).then((resultMessage) => {
     const ping = resultMessage.createdTimestamp - message.createdTimestamp;
     const messageSendingTime = Date.now() - message.createdTimestamp;

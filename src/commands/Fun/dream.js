@@ -13,7 +13,7 @@ const { PREFIXES } = require('../../../config.js');
 const Canvas = require('canvas');
 const { AttachmentBuilder } = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, db, args) => {
   if (message.attachments.size <= 0) return message.channel.send({
     content: `К сообщению с командой необходимо приложить фотографию, которую вы хотите наложить на пикчу. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
   });

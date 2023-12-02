@@ -9,7 +9,7 @@
 // https://opensource.org/license/mit/
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
-module.exports.run = async (client, interaction, command, subCommand, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   return new Promise((async resolver => {
     try {
       let evaled = await eval(arguments[0]);

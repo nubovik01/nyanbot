@@ -12,7 +12,7 @@
 const { BOT_NAME, WHITELIST, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 
-module.exports.run = async (client, interaction, command, subCommand, arguments) => {
+module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   if ((arguments[0] || arguments[1]) && !OWNER_IDS.includes(interaction.user.id)) return interaction.reply({
     content: "Извините, но просмотр по параметрам доступен только разработчикам бота."
   });
