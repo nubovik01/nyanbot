@@ -12,9 +12,7 @@
 const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, message, db, args) => {
-  if (!args[0]) return message.channel.send({ content: "Ты не указал ID пользователя, информацию о котором хочешь получить." });
-
-  const user = await db.getUser(args[0]);
+  const user = await db.getUser(args[0] || message.author.id);
   const userLastUsedCommand = await user.getDateOfLastUsedCommand();
   const userLastUsedSlashCommand = await user.getDateOfLastUsedSlashCommand();
   const userDiscordNickname = await user.getDiscordNickname() || "не записан";
@@ -24,7 +22,7 @@ module.exports.run = async (client, message, db, args) => {
 
   return message.channel.send({
     content: stripIndents`
-      Информация о пользователе с ID **\`${args[0]}\`**
+      Информация о пользователе с ID **\`${args[0] || message.author.id}\`**
 
       · Использовано команд: **${await user.getCommandsUsages()}** ☇
       · Последняя команда использована ${userLastUsedCommandText}
