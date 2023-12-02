@@ -11,6 +11,7 @@
 
 const { BOT_NAME, WHITELIST, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
+const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, message, db, args) => {
   if ((args[0] || args[1]) && !OWNER_IDS.includes(message.author.id)) return message.channel.send({
@@ -30,11 +31,13 @@ module.exports.run = async (client, message, db, args) => {
   const userIsDeveloperOfBot = OWNER_IDS.includes(user.id);
 
   return message.channel.send({
-    content: `Информация по серверу **${server.name}** и пользователю **${user.username}**
+    content: stripIndents`
+      Информация по серверу **${server.name}** и пользователю **${user.username}**
 
-Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
-Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
-Вы — разработчик ${BOT_NAME}? ${userIsDeveloperOfBot ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}`
+      Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+      Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+      Вы — разработчик ${BOT_NAME}? ${userIsDeveloperOfBot ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+    `
   });
 };
 

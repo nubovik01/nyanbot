@@ -11,13 +11,14 @@
 
 const { BOT_NAME, WHITELIST, OWNER_IDS } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
+const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   if ((arguments[0] || arguments[1]) && !OWNER_IDS.includes(interaction.user.id)) return interaction.reply({
     content: "Извините, но просмотр по параметрам доступен только разработчикам бота."
   });
 
-  if(arguments[0] && !arguments[1]) return interaction.reply({
+  if (arguments[0] && !arguments[1]) return interaction.reply({
     content: "Для полноценной работы данной slash-команды требуется указать все аргументы."
   });
 
@@ -34,11 +35,13 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
   const userIsDeveloperOfBot = OWNER_IDS.includes(user.id);
 
   return interaction.reply({
-    content: `Информация по серверу **${server.name}** и пользователю **${user.username}**
+    content: stripIndents`
+      Информация по серверу **${server.name}** и пользователю **${user.username}**
 
-Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
-Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
-Вы — разработчик ${BOT_NAME}? ${userIsDeveloperOfBot ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}`
+      Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+      Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+      Вы — разработчик ${BOT_NAME}? ${userIsDeveloperOfBot ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
+    `
   });
 };
 
