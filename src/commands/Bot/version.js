@@ -18,7 +18,7 @@ module.exports.run = async (client, message, db, args) => {
   const discordJsVersion = dependencies['discord.js'].substring(1);
 
   return message.channel.send({
-    content: `v${botVersion} ${emojis.DEFAULT.CAT} | ${process.version} ${emojis.CUSTOM.NODEJS} | v${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
+    content: `v${botVersion} ${emojis.DEFAULT.CAT} | ${process.version} ${emojis.CUSTOM.NODEJS} | v13.4 ${emojis.CUSTOM.POSTGRESQL} | v${discordJsVersion} ${emojis.CUSTOM.DISCORD}`
   });
 };
 
