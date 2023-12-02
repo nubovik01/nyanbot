@@ -108,7 +108,7 @@ module.exports.help = {
     "help",
     "help ping"
   ],
-  aliases: ['команды', 'commands'],
+  aliases: ['команды', 'commands', 'cmds'],
   rights: [],
   category: "bot",
   enable: true
