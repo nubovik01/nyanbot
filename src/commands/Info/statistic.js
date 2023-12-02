@@ -38,8 +38,8 @@ module.exports.help = {
   examples: [
     "statistic 972459903253889034"
   ],
-  aliases: ['статистика'],
+  aliases: ['статистика', 'stats', 'userstats', 'userstatistic'],
   rights: [],
-  category: "dev",
+  category: "info",
   enable: true
 };

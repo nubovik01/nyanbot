@@ -35,6 +35,6 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
 
 module.exports.help = {
   name: "statistic",
-  category: "dev",
+  category: "info",
   enable: true
 };
