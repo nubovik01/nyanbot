@@ -10,6 +10,10 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
+  if (['rldv1', 'royaledev', 'рояль', 'рлдв1'].some(value => arguments.includes(value))) return interaction.reply({
+    content: "рояль няшк<3"
+  }); // easter egg
+
   if (arguments[0] == true) {
     return interaction.reply({ content: `${arguments[1]} пидорасы ебаные.` });
   };
