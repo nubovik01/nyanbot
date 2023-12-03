@@ -28,15 +28,15 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
 
   const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(server.id);
 
-  const user = (arguments[1] == '-u' || !arguments[1]) ? interaction.user : (arguments[1]);
+  const user = interaction.user.id || arguments[1];
 
-  const isUserOnWhitelist = WHITELIST.USERS_IDS.includes(user.id);
+  const isUserOnWhitelist = WHITELIST.USERS_IDS.includes(user);
 
-  const userIsDeveloperOfBot = OWNER_IDS.includes(user.id);
+  const userIsDeveloperOfBot = OWNER_IDS.includes(user);
 
   return interaction.reply({
     content: stripIndents`
-      Информация по серверу **${server.name}** и пользователю **${user.username}**
+      Информация по серверу **${server.name}** и пользователю с ID **${user}**
 
       Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
       Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}

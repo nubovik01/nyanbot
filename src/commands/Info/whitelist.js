@@ -32,7 +32,7 @@ module.exports.run = async (client, message, db, args) => {
 
   return message.channel.send({
     content: stripIndents`
-      Информация по серверу **${server.name}** и пользователю **${user.username}**
+      Информация по серверу **${server.name}** и пользователю с ID **${user}**
 
       Сервер в белом списке? ${isServerOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}
       Пользователь в белом списке? ${isUserOnWhitelist ? emojis.DEFAULT.CHECK_MARK : emojis.DEFAULT.CROSS}

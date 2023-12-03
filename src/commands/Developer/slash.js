@@ -84,7 +84,7 @@ module.exports.run = async (client, message, db, args) => {
           },
           {
             name: 'участник',
-            description: 'Упомяните или укажите ID пользователя, информацию по которому требуется узнать (-u — указать себя)',
+            description: 'Упомяните или укажите ID пользователя, информацию по которому требуется узнать',
             required: false,
             type: 6
           }
