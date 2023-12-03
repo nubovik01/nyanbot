@@ -16,16 +16,11 @@ module.exports.run = async (message, client) => {
 
   const db = new Base();
   const user = await db.getUser(message.author.id);
+  const userDiscordNickname = await user.getDiscordNickname();
 
-  if (await user.getDiscordNickname() == null) {
-    let newNickname = "";
+  const newNickname = (message.author.discriminator == 0) ? message.author.username : `${message.author.username}#${message.author.discriminator}`;
 
-    if (message.author.discriminator === 0) {
-      newNickname = message.author.username;
-    } else {
-      newNickname = `${message.author.username}#${message.author.discriminator}`;
-    };
-
+  if (userDiscordNickname == null || userDiscordNickname != newNickname) {
     await user.setDiscordNickname(newNickname);
   };
 
