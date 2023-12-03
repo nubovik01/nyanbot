@@ -58,6 +58,15 @@ module.exports = class User {
   };
   */
 
+  async getId() {
+    return this._id;
+  };
+
+  async setId(value) {
+    await require('./Bases.js').instance.query("UPDATE users SET \"id\" = $1 WHERE id = $2;", [value, this._id]);
+    this._id = value;
+  };
+
   async getXp() {
     return this._xp;
   };

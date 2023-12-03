@@ -28,7 +28,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
 
   const isServerOnWhitelist = WHITELIST.SERVERS_IDS.includes(server.id);
 
-  const user = (arguments[1] == '-u' || !arguments[1]) ? interaction.user : (message.mentions.users.first() || arguments[1]);
+  const user = (arguments[1] == '-u' || !arguments[1]) ? interaction.user : (arguments[1]);
 
   const isUserOnWhitelist = WHITELIST.USERS_IDS.includes(user.id);
 

@@ -22,7 +22,8 @@ module.exports = {
     COMPUTER: "💻",
     ROFL: "🤣",
     NSFW: "🔞",
-    CAT: "🐱"
+    CAT: "🐱",
+    EURO: "💶"
   },
   CUSTOM: {
     NODEJS: "<:NodeJS:927319476058325002>",

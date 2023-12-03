@@ -62,7 +62,7 @@ module.exports.run = async (client, message, db, args) => {
     return message.channel.send({ embeds: [commandInfoHelpEmbed] });
   };
 
-  const commandsList = { bot: [], dev: [], fun: [], info: [], nsfw: [] };
+  const commandsList = { bot: [], dev: [], fun: [], info: [], nsfw: [], economy: [] };
 
   client.commands.forEach(command => {
     commandsList[command.help.category].push(command.help.name);
@@ -72,6 +72,11 @@ module.exports.run = async (client, message, db, args) => {
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setDescription(`Ссылки на ресурсы ${BOT_NAME}: ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}) и ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})`)
     .addFields([
+      {
+        name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList['economy'].length}**)`,
+        value: `\`${prefix}${commandsList['economy'].join(`\`, \`${prefix}`)}\``,
+        inline: false
+      },
       {
         name: `${emojis.DEFAULT.ROFL} . Развлекательные (**${commandsList['fun'].length}**)`,
         value: `\`${prefix}${commandsList['fun'].join(`\`, \`${prefix}`)}\``,

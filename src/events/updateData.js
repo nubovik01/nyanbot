@@ -16,10 +16,10 @@ module.exports.run = async (message, client) => {
 
   const db = new Base();
   const user = await db.getUser(message.author.id);
+
+  // update discord nickname of user in db
   const userDiscordNickname = await user.getDiscordNickname();
-
   const newNickname = (message.author.discriminator == 0) ? message.author.username : `${message.author.username}#${message.author.discriminator}`;
-
   if (userDiscordNickname == null || userDiscordNickname != newNickname) {
     await user.setDiscordNickname(newNickname);
   };

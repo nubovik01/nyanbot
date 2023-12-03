@@ -24,15 +24,15 @@ module.exports.run = async (client, message, db, args) => {
       },
       {
         name: 'omyum',
-        description: 'Скидывает картинку с милым амнямом'
+        description: 'Скидывает в текущий чат картинку с милым амнямом.'
       },
       {
         name: 'help',
-        description: 'Список команд бота.',
+        description: 'Полный список slash-команд бота.',
         options: [
           {
             name: 'команда',
-            description: 'Получить справку по команде. К примеру, "ping".',
+            description: 'Команда, по которой требуется получить справку. К примеру, "ping".',
             required: false,
             type: 3
           }
@@ -40,21 +40,21 @@ module.exports.run = async (client, message, db, args) => {
       },
       {
         name: 'ping',
-        description: 'Получить текущую задержку бота, Discord API и Websocket.'
+        description: 'Получить текущую задержку базы данных, Discord API и Websocket.'
       },
       {
         name: 'pidoras',
-        description: 'Бот напишет "пидорас ебаный" в отношении того, кого вы упомяните.',
+        description: 'Бот назовёт пидорасом указанного пользователя или человека.',
         options: [
           {
             name: 'множественное_число',
-            description: 'Хотите упомянуть нескольких людей? Да/нет',
+            description: 'Хотите упомянуть нескольких человек? Да/нет',
             required: true,
             type: 5
           },
           {
             name: 'имя_человека',
-            description: 'Упомянаемый человек, которого требуется назвать пидорасом.',
+            description: 'Целевой участник (требуется указать имя или упоминание)',
             required: true,
             type: 3
           }
@@ -74,31 +74,43 @@ module.exports.run = async (client, message, db, args) => {
       },
       {
         name: 'whitelist',
-        description: 'Проверить, находится ли сервер или пользователь в белом списке ' + BOT_NAME,
+        description: 'Проверяет, находится ли сервер или пользователь в белом списке ' + BOT_NAME,
         options: [
           {
             name: 'id-сервера',
-            description: 'Укажите ID сервера, информацию по которому требуется узнать',
+            description: 'Укажите ID сервера, информацию по которому нужно узнать (-s — для текущего).',
             required: false,
             type: 3
           },
           {
-            name: 'id-пользователя',
-            description: 'Укажите ID пользователя, информацию по которому требуется узнать',
+            name: 'участник',
+            description: 'Упомяните или укажите ID пользователя, информацию по которому требуется узнать (-u — указать себя)',
             required: false,
-            type: 3
+            type: 6
           }
         ]
       },
       {
         name: 'statistic',
-        description: 'Некоторая информация и статистика о определённом пользователе из БД',
+        description: 'Получить некоторую информацию и статистику о определённом пользователе из БД.',
         options: [
           {
-            name: 'id-пользователя',
-            description: 'Укажите ID пользователя, информацию по которому требуется узнать',
+            name: 'участник',
+            description: 'Упомяните или укажите ID пользователя, информацию по которому требуется узнать',
             required: false,
-            type: 3
+            type: 6
+          }
+        ]
+      },
+      {
+        name: 'balance',
+        description: 'Узнать баланс определенного пользователя в боте.',
+        options: [
+          {
+            name: 'участник',
+            description: 'Упомяните или укажите ID пользователя, информацию по которому требуется узнать',
+            required: false,
+            type: 6
           }
         ]
       },
@@ -110,77 +122,77 @@ module.exports.run = async (client, message, db, args) => {
           {
             name: 'anal',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с аналом',
+            description: 'Бот отправит NSFW фотографию или GIF с аналом в текущий чат',
           },
           {
             name: 'hanal',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с аналом из хентая',
+            description: 'Бот отправит NSFW фотографию или GIF с аналом из хентая в текущий чат',
           },
           {
             name: 'ass',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с женской жопой'
+            description: 'Бот отправит NSFW фотографию или GIF с женской жопой в текущий чат'
           },
           {
             name: 'hass',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с женской жопой из хентая'
+            description: 'Бот отправит NSFW фотографию или GIF с женской жопой из хентая в текущий чат'
           },
           {
             name: 'pussy',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с киской'
+            description: 'Бот отправит NSFW фотографию или GIF с киской в текущий чат'
           },
           {
             name: 'boobs',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с сиськами'
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами в текущий чат'
           },
           {
             name: 'hboobs',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с сиськами из хентая'
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами из хентая в текущий чат'
           },
           {
             name: 'boobs2',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с сиськами с другого API'
+            description: 'Бот отправит NSFW фотографию или GIF с сиськами с другого API в текущий чат'
           },
           {
             name: 'hentai',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с хентаем'
+            description: 'Бот отправит NSFW фотографию или GIF с хентаем в текущий чат'
           },
           {
             name: 'hneko',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с кошкодевочкой из хентая'
+            description: 'Бот отправит NSFW фотографию или GIF с кошкодевочкой из хентая в текущий чат'
           },
           {
             name: 'yaoi',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с яой'
+            description: 'Бот отправит NSFW фотографию или GIF с яой в текущий чат'
           },
           {
             name: 'tentacle',
             type: 1,
-            description: 'Бот отправит NSFW фотографию или GIF с тентаклями'
+            description: 'Бот отправит NSFW фотографию или GIF с тентаклями в текущий чат'
           }
         ]
       },
       {
         name: 'animals',
-        description: 'Команды с картинками или GIF животных',
+        description: 'Команды с картинками или GIF с различными животными.',
         options: [
           {
             name: 'httpcat',
             type: 1,
-            description: 'Картинка с котиком и случайным http кодом ошибки',
+            description: 'Бот скинет в текущий чат картинку с котиком и случайным HTTP кодом ошибки.',
             options: [
               {
                 name: 'код',
-                description: 'Вы можете указать свой http код ошибки. К примеру, 404.',
+                description: 'Укажите свой HTTP код ошибки. К примеру, 404.',
                 required: false,
                 type: 3
               }
@@ -189,11 +201,11 @@ module.exports.run = async (client, message, db, args) => {
           {
             name: 'catsays',
             type: 1,
-            description: 'Отправит картинку с котиком и с вашей надписью',
+            description: 'Отправить в чат картинку с случайным котиком и Вашей надписью.',
             options: [
               {
                 name: 'надпись',
-                description: 'Текст, который будет наложен на картинку',
+                description: 'Текст, который требуется наложить на картинку',
                 required: true,
                 type: 3
               }
@@ -202,32 +214,32 @@ module.exports.run = async (client, message, db, args) => {
           {
             name: 'bunny',
             type: 1,
-            description: 'Картинка или GIF с случайным кроликом',
+            description: 'Бот скинет в текущий чат картинку или GIF с случайным кроликом.',
           },
           {
             name: 'dog',
             type: 1,
-            description: 'Картинка или GIF с случайной собакой',
+            description: 'Бот скинет в текущий чат картинку или GIF с случайной собакой.',
           },
           {
             name: 'duck',
             type: 1,
-            description: 'Картинка или GIF с случайной уткой',
+            description: 'Бот скинет в текущий чат картинку или GIF с случайной уткой.',
           },
           {
             name: 'lizard',
             type: 1,
-            description: 'Картинка или GIF с случайной змеёй',
+            description: 'Бот скинет в текущий чат картинку или GIF с случайной змеёй.',
           }
         ]
       },
       {
         name: 'uptime',
-        description: 'Получить точное время запуска бота.'
+        description: 'Позволяет узнать точную дату и время последнего запуска бота.'
       },
       {
         name: 'version',
-        description: 'Получить текущую версию бота, node.js и discord.js.'
+        description: `Получить текущую версию ${BOT_NAME}, PostgreSQL и discord.js.`
       },
     ]);
 

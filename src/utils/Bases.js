@@ -68,6 +68,16 @@ class BaseConnection {
     return await this.#usersCache.get(id);
   };
 
+  async checkUserExistence(id) {
+    const con = await this.#pool.connect();
+    try {
+      const result = await con.query('SELECT EXISTS (SELECT 1 FROM users WHERE id = $1)', [id]);
+      return result.rows[0].exists;
+    } finally {
+      con.release();
+    };
+  };
+
   async getSize(name) {
     let result = await this.query(`SELECT pg_size_pretty( pg_total_relation_size( '${name}' ) );`);
     return result.rows[0];
