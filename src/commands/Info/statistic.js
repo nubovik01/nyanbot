@@ -12,7 +12,13 @@
 const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, message, db, args) => {
-  const user = await db.getUser(args[0] || message.author.id);
+  const targetUser = message.mentions.users.first() || (args.length !== 0 && /\d{18}/gm.test(args[0]) ? { id: args[0] } : message.author);
+
+  if (!await db.checkUserExistence(targetUser.id)) return interaction.reply({
+    content: "Невозможно получить статистику! Выбранный Вами пользователь ни разу не пользовался ботом."
+  });
+
+  const user = await db.getUser(targetUser.id);
   const userLastUsedCommand = await user.getDateOfLastUsedCommand();
   const userLastUsedSlashCommand = await user.getDateOfLastUsedSlashCommand();
   const userDiscordNickname = await user.getDiscordNickname() || "не записан";
@@ -22,7 +28,7 @@ module.exports.run = async (client, message, db, args) => {
 
   return message.channel.send({
     content: stripIndents`
-      Информация о пользователе с ID **\`${args[0] || message.author.id}\`**
+      Информация о пользователе с ID **\`${targetUser.id}\`**
 
       · Использовано команд: **${await user.getCommandsUsages()}** ☇
       · Последняя команда использована ${userLastUsedCommandText}

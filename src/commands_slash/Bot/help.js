@@ -17,7 +17,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
   const prefix = PREFIXES.DEFAULT;
 
   if (arguments[0]) {
-    const command = client.commands.get(arguments[0]) || client.commands.get(client.commandsAliases.get(arguments[0]));
+    const command = client.slashCommands.get(arguments[0]) || client.slashCommands.get(client.commandsAliases.get(arguments[0]));
 
     if ((command == 'undefined' || command == undefined || command == NaN)) return interaction.reply({
       content: "Мявк! Кажется, такая команда не существует."
@@ -28,33 +28,19 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
       files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
     });
 
-    const commandDescription = command.help.description;
-
-    const commandRights = command.help.rights;
-
     const commandInfoHelpEmbed = new EmbedBuilder()
       .setColor(EMBED_COLORS.BOT_EMBED)
       .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`/${command.help.name}\``)
-      .setDescription(`${commandDescription ? commandDescription : "У этой команды пока нет описания..."}`)
+      .setDescription(`Описание доступно при написании команды \`${command.help.name}\``)
       .setFields([
         {
           name: "Алиасы " + emojis.DEFAULT.MINIDISC,
-          value: `\`${command.help.aliases.join(', ')}\``,
+          value: `Slash-команды не поддерживают алиасы.`,
           inline: false
-        },
-        {
-          name: "Необходимые права " + emojis.DEFAULT.POLICE,
-          value: `\`${commandRights.length ? commandRights : 'отсутствуют'}\``,
-          inline: true
         },
         {
           name: "Категория",
           value: `тех. ${command.help.category}`,
-          inline: true
-        },
-        {
-          name: "Примеры использования",
-          value: `\`\`\`/${command.help.examples.join(`\n${prefix}`)}\`\`\``,
           inline: false
         }
       ]);

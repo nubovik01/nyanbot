@@ -1,23 +1,18 @@
 main.js
 // TODO: добавить кулдауны командам и slash-командам
-// TODO: подключить postgresql/mongodb к боту [>.<]
 // TODO: добавить боту локализацию, если потребуется [>.<]
 // TODO: что на счёт англоязычной аудитории? [>.<]
 // TODO: сделать команду botinfo
 
 src/commands/Bot/help.js
 // TODO: добавить подсказки по типу "А вы знали, что командой %s можно %s?"
-// TODO: сделать динамический список команд
 // TODO: в будущем добавить в fields к commandInfoHelpEmbed инфу о кулдаунах
 
 src/commands/Developer/slash.js
 // TODO: локализировать slash-команды
 
-src/events/CommandsHandler.js
-// TODO: сделать проверку прав пользователя и бота
-
 src/handlers/RequestHandlerNSFW.js
 // TODO: добавить гейскую порнушку и фембойчиков :3
 
 src/handlers/AnimalsRequestHandler.js
-// TODO: добавить больше животных
+// TODO: добавить больше животных   
