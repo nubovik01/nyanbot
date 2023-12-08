@@ -24,13 +24,13 @@ module.exports = class ResponseParser {
           instance[key] = this.parse(instance[key], object[key]);
         } else if (object[key.substring(1)] !== undefined) {
           instance[key] = this.parse(instance[key], object[key.substring(1)]);
-        }
+        };
       } else if (object[key] !== undefined) {
         instance[key] = object[key];
       } else if (object[key.substring(1)] !== undefined) {
         instance[key] = object[key.substring(1)];
-      }
-    }
+      };
+    };
     return instance;
-  }
+  };
 };

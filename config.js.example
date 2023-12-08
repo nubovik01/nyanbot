@@ -21,7 +21,7 @@ module.exports = {
   TELEGRAM_CHANNEL: "LINK_ON_CHANNEL"
   BOT_NAME: "NAME_OF_BOT",
   VERSION_MANAGEMENT_SYMBOL: "SYMBOL_OF_VERSION",
-  CHANGE_NICKNAME_ON_SUPPORT_SERVER: "false", // type "true" if you wanna turn it
+  CHANGE_NICKNAME_ON_SUPPORT_SERVER: false, // type "true" if you wanna turn it
   PREFIXES: {
     DEFAULT: "DEFAULT_PREFIX",
     DEBUG: "DEBUG_PREFIX",

@@ -31,7 +31,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     const commandInfoHelpEmbed = new EmbedBuilder()
       .setColor(EMBED_COLORS.BOT_EMBED)
       .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`/${command.help.name}\``)
-      .setDescription(`Описание доступно при написании команды \`${command.help.name}\``)
+      .setDescription(`Описание доступно при написании команды \`/${command.help.name}\``)
       .setFields([
         {
           name: "Алиасы " + emojis.DEFAULT.MINIDISC,

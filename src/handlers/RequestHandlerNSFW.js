@@ -17,7 +17,7 @@ getImageOnNekobot = async function (type) {
 };
 
 getImageOnOboobs = async function () {
-  const objectId = [Math.floor(Math.random() * 10930)];
+  const objectId = Math.floor(Math.random() * 10930);
   const body = await fetch("http://api.oboobs.ru/boobs/" + objectId);
   return "http://media.oboobs.ru/" + await (await body.json())[0].preview;
 };

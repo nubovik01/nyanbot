@@ -13,6 +13,7 @@ const ArgsSplit = require("../utils/CommandsArgsParser.js");
 const { PREFIXES, OWNER_IDS, WHITELIST } = require('../../config.js');
 const { AttachmentBuilder, PermissionsBitField } = require('discord.js');
 const Base = require('../utils/Bases.js');
+const { oneLine } = require("common-tags");
 
 module.exports.run = async (message, client) => {
   if (!'0', '2'.includes(message.channel.type) || message.author.bot) return;
@@ -57,7 +58,8 @@ module.exports.run = async (message, client) => {
 
   for (const right of command.help.rights) {
     if (!message.guild.members.cache.get(client.user.id).permissions.has(right)) return message.channel.send({
-      content: `У бота нет права **${right}**, требующегося для полноценной функциональности бота. Пожалуйста, выдайте данное право боту в настройках ролей, либо попросите администратора сервера это сделать.`
+      content: oneLine`У бота нет права **${right}**, требующегося для полноценной функциональности бота.
+      Пожалуйста, выдайте данное право боту в настройках ролей, либо попросите администратора сервера это сделать.`
     });
 
     if (!message.member.permissions.has(PermissionsBitField.Flags[right])) return message.channel.send({
