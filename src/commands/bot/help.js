@@ -10,8 +10,9 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { PREFIXES, EMBED_COLORS, OWNER_IDS, BOT_NAME, SUPPORT_SERVER, TELEGRAM_CHANNEL } = require('../../../config.js');
+const { PREFIXES, EMBED_COLORS, OWNER_IDS, BOT_NAME, SUPPORT_SERVER, TELEGRAM_CHANNEL, GITHUB_REPO } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
+const { oneLine } = require("common-tags");
 
 module.exports.run = async (client, message, db, args) => {
   const prefix = PREFIXES.DEFAULT;
@@ -70,7 +71,12 @@ module.exports.run = async (client, message, db, args) => {
 
   const embedWithCommands = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
-    .setDescription(`Ссылки на ресурсы ${BOT_NAME}: ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}) и ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})`)
+    .setDescription(
+      oneLine`Ссылки на ресурсы ${BOT_NAME}:
+      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}),
+      ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})
+      и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).`
+    )
     .addFields([
       {
         name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList['economy'].length}**)`,
@@ -103,7 +109,7 @@ module.exports.run = async (client, message, db, args) => {
         inline: false
       }
     ]);
-  
+
   return message.channel.send({ embeds: [embedWithCommands] });
 };
 

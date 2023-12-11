@@ -241,6 +241,10 @@ module.exports.run = async (client, message, db, args) => {
         name: 'version',
         description: `Получить текущую версию ${BOT_NAME}, PostgreSQL и discord.js.`
       },
+      {
+        name: 'source',
+        description: `Получить ссылку на открытый исходный код ${BOT_NAME} на GitHub`
+      },
     ]);
 
     return message.channel.send({ content: "Slash-команды обновлены глобально." });

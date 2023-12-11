@@ -10,8 +10,9 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { PREFIXES, EMBED_COLORS, OWNER_IDS, BOT_NAME, TELEGRAM_CHANNEL, SUPPORT_SERVER } = require('../../../config.js');
+const { PREFIXES, EMBED_COLORS, OWNER_IDS, BOT_NAME, TELEGRAM_CHANNEL, SUPPORT_SERVER, GITHUB_REPO } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   const prefix = PREFIXES.DEFAULT;
@@ -28,10 +29,10 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
       files: [new AttachmentBuilder('./assets/gifs/haram.gif', 'haram.gif')]
     });
 
-    const commandInfoHelpEmbed = new EmbedBuilder()
+    const slashCommandInfoHelpEmbed = new EmbedBuilder()
       .setColor(EMBED_COLORS.BOT_EMBED)
-      .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`/${command.help.name}\``)
-      .setDescription(`Описание доступно при написании команды \`/${command.help.name}\``)
+      .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по slash-команде \`/${command.help.name}\``)
+      .setDescription(`Описание доступно при написании slash-команды \`/${command.help.name}\``)
       .setFields([
         {
           name: "Алиасы " + emojis.DEFAULT.MINIDISC,
@@ -45,7 +46,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
         }
       ]);
 
-    return interaction.reply({ embeds: [commandInfoHelpEmbed] });
+    return interaction.reply({ embeds: [slashCommandInfoHelpEmbed] });
   };
 
   const commandsList = { bot: [], dev: [], fun: [], info: [], nsfw: [], economy: [] };
@@ -54,9 +55,14 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     commandsList[command.help.category].push(command.help.name);
   });
 
-  const embedWithCommands = new EmbedBuilder()
+  const embedWithSlashCommands = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
-    .setDescription(`Ссылки на ресурсы ${BOT_NAME}: ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}) и ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})`)
+    .setDescription(
+      oneLine`Ссылки на ресурсы ${BOT_NAME}:
+      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}),
+      ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})
+      и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).`
+    )
     .addFields([
       {
         name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList['economy'].length}**)`,
@@ -90,7 +96,7 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
       }
     ]);
   
-  return interaction.reply({ embeds: [embedWithCommands] });
+  return interaction.reply({ embeds: [embedWithSlashCommands] });
 };
 
 module.exports.help = {
