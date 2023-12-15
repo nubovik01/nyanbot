@@ -22,7 +22,21 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     'catsays': () => animals.catsays(arguments[0])
   };
 
-  return interaction.reply({ files: [new AttachmentBuilder(await animalsSubCommandList[subCommand]())] });
+  if(subCommand == "catsays") {
+    return interaction.reply({
+      content: "created w/ nyanbot & cataas.com, meow! <3",
+      files: [new AttachmentBuilder(await animalsSubCommandList['catsays'](), 'kekw.jpg')]
+    });
+  };
+
+  if(subCommand == "httpcat") {
+    return interaction.reply({
+      content: "created w/ nyanbot & http.cat, meow! <3",
+      files: [new AttachmentBuilder(await animalsSubCommandList['httpcat']())]
+    });
+  };
+
+  return interaction.reply({files: [new AttachmentBuilder(await animalsSubCommandList[subCommand]())] });
 };
 
 module.exports.help = {

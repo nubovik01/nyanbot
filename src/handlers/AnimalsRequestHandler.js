@@ -45,13 +45,21 @@ getRandomImageOfLizard = async function () {
   return await (await body.json()).url;
 };
 
+getImageOnCataas = async function (text) {
+  const picture = await fetch("https://cataas.com/cat/says/" + text);
+
+  const bufferOfPicture = Buffer.from(await picture.arrayBuffer());
+
+  return bufferOfPicture;
+};
+
 const ANIMAL_TYPES = {
   'httpCat': (httpCode) => getImageOnHttpCat(httpCode),
   'bunny': () => getRandomImageOfBunny(),
   'dog': () => getRandomImageOfDog(),
   'duck': () => getRandomImageOfDuck(),
   'lizard': () => getRandomImageOfLizard(),
-  'catsays': (text) => `https://cataas.com/cat/says/${text}.jpg`
+  'catsays': (text) => getImageOnCataas(text)
 };
 
 module.exports.animals = ANIMAL_TYPES;

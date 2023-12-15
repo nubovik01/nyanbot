@@ -13,7 +13,10 @@ const { animals } = require('../../handlers/AnimalsRequestHandler.js');
 const { AttachmentBuilder } = require('discord.js');
 
 module.exports.run = async (client, message, db, args) => {
-  return message.channel.send({ files: [new AttachmentBuilder(await animals.httpCat(args[0]))] });
+  return message.channel.send({ 
+    content: "created w/ nyanbot & http.cat, meow! <3",
+    files: [new AttachmentBuilder(await animals.httpCat(args[0]), 'kekw.jpg')]
+  });
 };
 
 module.exports.help = {
