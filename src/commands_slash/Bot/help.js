@@ -10,13 +10,11 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { PREFIXES, EMBED_COLORS, OWNER_IDS, BOT_NAME, TELEGRAM_CHANNEL, SUPPORT_SERVER, GITHUB_REPO } = require('../../../config.js');
+const { EMBED_COLORS, OWNER_IDS, BOT_NAME, TELEGRAM_CHANNEL, SUPPORT_SERVER, GITHUB_REPO } = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
-  const prefix = PREFIXES.DEFAULT;
-
   if (arguments[0]) {
     const command = client.slashCommands.get(arguments[0]) || client.slashCommands.get(client.commandsAliases.get(arguments[0]));
 
@@ -49,53 +47,57 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     return interaction.reply({ embeds: [slashCommandInfoHelpEmbed] });
   };
 
-  const commandsList = { bot: [], dev: [], fun: [], info: [], nsfw: [], economy: [] };
+  const commandsList = new Map();
 
   client.slashCommands.forEach(command => {
-    commandsList[command.help.category].push(command.help.name);
+    const category = command.help.category;
+
+    if (!commandsList.has(category)) commandsList.set(category, []);
+
+    commandsList.get(category).push(command.help.name);
   });
 
   const embedWithSlashCommands = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setDescription(
       oneLine`Ссылки на ресурсы ${BOT_NAME}:
-      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}),
+      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER.LINK}),
       ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})
       и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).`
     )
     .addFields([
       {
-        name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList['economy'].length}**)`,
-        value: `\`${prefix}${commandsList['economy'].join(`\`, \`${prefix}`)}\``,
+        name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList.get('economy').length}**)`,
+        value: `\`/${commandsList.get('economy').join(`\`, \`/`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.ROFL} . Развлекательные (**${commandsList['fun'].length}**)`,
-        value: `\`/${commandsList['fun'].join(`\`, \`/`)}\``,
+        name: `${emojis.DEFAULT.ROFL} . Развлекательные (**${commandsList.get('fun').length}**)`,
+        value: `\`/${commandsList.get('fun').join(`\`, \`/`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.NOTEPAD} . Информация (**${commandsList['info'].length}**)`,
-        value: `\`/${commandsList['info'].join(`\`, \`/`)}\``,
+        name: `${emojis.DEFAULT.NOTEPAD} . Информация (**${commandsList.get('info').length}**)`,
+        value: `\`/${commandsList.get('info').join(`\`, \`/`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.ROBOT} . Бот (**${commandsList['bot'].length}**)`,
-        value: `\`/${commandsList['bot'].join(`\`, \`/`)}\``,
+        name: `${emojis.DEFAULT.ROBOT} . Бот (**${commandsList.get('bot').length}**)`,
+        value: `\`/${commandsList.get('bot').join(`\`, \`/`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.COMPUTER} . Для разработчиков (**${commandsList['dev'].length}**)`,
-        value: `${OWNER_IDS.includes(interaction.user.id) ? `\`/${commandsList['dev'].join(`\`, \`/`)}\`` : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
+        name: `${emojis.DEFAULT.COMPUTER} . Для разработчиков (**${commandsList.get('dev').length}**)`,
+        value: `${OWNER_IDS.includes(interaction.user.id) ? `\`/${commandsList.get('dev').join(`\`, \`/`)}\`` : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.NSFW} . NSFW (**${commandsList['nsfw'].length}**)`,
-        value: `${interaction.channel.nsfw ? `\`/${commandsList['nsfw'].join(`\`, \`/`)}\`` : "*Список доступен только в NSFW-канале.*"}`,
+        name: `${emojis.DEFAULT.NSFW} . NSFW (**${commandsList.get('nsfw').length}**)`,
+        value: `${interaction.channel.nsfw ? `\`/${commandsList.get('nsfw').join(`\`, \`/`)}\`` : "*Список доступен только в NSFW-канале.*"}`,
         inline: false
       }
     ]);
-  
+
   return interaction.reply({ embeds: [embedWithSlashCommands] });
 };
 

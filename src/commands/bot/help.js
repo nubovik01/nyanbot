@@ -63,49 +63,53 @@ module.exports.run = async (client, message, db, args) => {
     return message.channel.send({ embeds: [commandInfoHelpEmbed] });
   };
 
-  const commandsList = { bot: [], dev: [], fun: [], info: [], nsfw: [], economy: [] };
+  const commandsList = new Map();
 
   client.commands.forEach(command => {
-    commandsList[command.help.category].push(command.help.name);
+    const category = command.help.category;
+
+    if (!commandsList.has(category)) commandsList.set(category, []);
+
+    commandsList.get(category).push(command.help.name);
   });
 
   const embedWithCommands = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setDescription(
       oneLine`Ссылки на ресурсы ${BOT_NAME}:
-      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER}),
+      ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER.LINK}),
       ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})
       и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).`
     )
     .addFields([
       {
-        name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList['economy'].length}**)`,
-        value: `\`${prefix}${commandsList['economy'].join(`\`, \`${prefix}`)}\``,
+        name: `${emojis.DEFAULT.EURO} . Экономика (**${commandsList.get('economy').length}**)`,
+        value: `\`${prefix}${commandsList.get('economy').join(`\`, \`${prefix}`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.ROFL} . Развлекательные (**${commandsList['fun'].length}**)`,
-        value: `\`${prefix}${commandsList['fun'].join(`\`, \`${prefix}`)}\``,
+        name: `${emojis.DEFAULT.ROFL} . Развлекательные (**${commandsList.get('fun').length}**)`,
+        value: `\`${prefix}${commandsList.get('fun').join(`\`, \`${prefix}`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.NOTEPAD} . Информация (**${commandsList['info'].length}**)`,
-        value: `\`${prefix}${commandsList['info'].join(`\`, \`${prefix}`)}\``,
+        name: `${emojis.DEFAULT.NOTEPAD} . Информация (**${commandsList.get('info').length}**)`,
+        value: `\`${prefix}${commandsList.get('info').join(`\`, \`${prefix}`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.ROBOT} . Бот (**${commandsList['bot'].length}**)`,
-        value: `\`${prefix}${commandsList['bot'].join(`\`, \`${prefix}`)}\``,
+        name: `${emojis.DEFAULT.ROBOT} . Бот (**${commandsList.get('bot').length}**)`,
+        value: `\`${prefix}${commandsList.get('bot').join(`\`, \`${prefix}`)}\``,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.COMPUTER} . Для разработчиков (**${commandsList['dev'].length}**)`,
-        value: `${OWNER_IDS.includes(message.author.id) ? `\`${prefix}${commandsList['dev'].join(`\`, \`${prefix}`)}\`` : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
+        name: `${emojis.DEFAULT.COMPUTER} . Для разработчиков (**${commandsList.get('dev').length}**)`,
+        value: `${OWNER_IDS.includes(message.author.id) ? `\`${prefix}${commandsList.get('dev').join(`\`, \`${prefix}`)}\`` : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.NSFW} . NSFW (**${commandsList['nsfw'].length}**)`,
-        value: `${message.channel.nsfw ? `\`${prefix}${commandsList['nsfw'].join(`\`, \`${prefix}`)}\`` : "*Список доступен только в NSFW-канале.*"}`,
+        name: `${emojis.DEFAULT.NSFW} . NSFW (**${commandsList.get('nsfw').length}**)`,
+        value: `${message.channel.nsfw ? `\`${prefix}${commandsList.get('nsfw').join(`\`, \`${prefix}`)}\`` : "*Список доступен только в NSFW-канале.*"}`,
         inline: false
       }
     ]);
