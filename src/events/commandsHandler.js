@@ -58,8 +58,10 @@ module.exports.run = async (message, client) => {
 
   for (const right of command.help.rights) {
     if (!message.guild.members.cache.get(client.user.id).permissions.has(right)) return message.channel.send({
-      content: oneLine`У бота нет права **${right}**, требующегося для полноценной функциональности бота.
-      Пожалуйста, выдайте данное право боту в настройках ролей, либо попросите администратора сервера это сделать.`
+      content: oneLine`
+        У бота нет права **${right}**, требующегося для полноценной функциональности бота.
+        Пожалуйста, выдайте данное право боту в настройках ролей, либо попросите администратора сервера это сделать.
+      `
     });
 
     if (!message.member.permissions.has(PermissionsBitField.Flags[right])) return message.channel.send({

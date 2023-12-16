@@ -12,9 +12,12 @@
 const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, message, db, args) => {
-  const targetUser = message.mentions.users.first() || (args.length !== 0 && /\d{18}/gm.test(args[0]) ? { id: args[0] } : message.author);
+  const targetUser = message.mentions.users.first()
+  || (args.length !== 0 && /\d{18}/gm.test(args[0])
+  ? {id: args[0] }
+  : message.author);
 
-  if (!await db.checkUserExistence(targetUser.id)) return interaction.reply({
+  if (!await db.checkUserExistence(targetUser.id)) return message.channel.send({
     content: "Невозможно получить статистику! Выбранный Вами пользователь ни разу не пользовался ботом."
   });
 
@@ -42,7 +45,9 @@ module.exports.run = async (client, message, db, args) => {
 module.exports.help = {
   name: "statistic",
   examples: [
-    "statistic 972459903253889034"
+    "statistic",
+    "statistic 972459903253889034",
+    "statistic @Wumpus"
   ],
   aliases: ['статистика', 'stats', 'userstats', 'userstatistic'],
   rights: [],

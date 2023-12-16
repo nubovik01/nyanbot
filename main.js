@@ -23,7 +23,6 @@ const client = new Client({
 client.commands = new Collection();
 client.commandsAliases = new Collection();
 client.slashCommands = new Collection();
-client.events = new Collection();
 
 const commandsFolders = fs.readdirSync('./src/commands');
 const slashCommandsFolders = fs.readdirSync('./src/commands_slash');

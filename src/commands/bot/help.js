@@ -34,7 +34,7 @@ module.exports.run = async (client, message, db, args) => {
     const commandRights = command.help.rights;
 
     const commandInfoHelpEmbed = new EmbedBuilder()
-      .setColor(EMBED_COLORS.BOT_EMBED)
+      .setColor(EMBED_COLORS.DEFAULT)
       .setTitle(`${emojis.DEFAULT.NOTEPAD} . Справка по команде \`${prefix}${command.help.name}\``)
       .setDescription(`${commandDescription ? commandDescription : "У этой команды пока нет описания..."}`)
       .setFields([
@@ -74,12 +74,13 @@ module.exports.run = async (client, message, db, args) => {
   });
 
   const embedWithCommands = new EmbedBuilder()
-    .setColor(EMBED_COLORS.BOT_EMBED)
-    .setDescription(
-      oneLine`Ссылки на ресурсы ${BOT_NAME}:
+    .setColor(EMBED_COLORS.DEFAULT)
+    .setDescription(oneLine`
+      Ссылки на ресурсы ${BOT_NAME}:
       ${emojis.CUSTOM.DISCORD} [Discord](${SUPPORT_SERVER.LINK}),
       ${emojis.CUSTOM.TELEGRAM} [Telegram](${TELEGRAM_CHANNEL})
-      и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).`
+      и ${emojis.CUSTOM.GITHUB} [GitHub](${GITHUB_REPO}).
+    `
     )
     .addFields([
       {

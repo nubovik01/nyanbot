@@ -23,7 +23,13 @@ module.exports = {
     ROFL: "🤣",
     NSFW: "🔞",
     CAT: "🐱",
-    EURO: "💶"
+    EURO: "💶",
+    LINK: "🔗",
+    SETTINGS: "⚙️",
+    LABEL: "🏷️",
+    CLOCK4: "🕓",
+    BAR_CHART: "📊",
+    PIN: "📌"
   },
   CUSTOM: {
     NODEJS: "<:NodeJS:927319476058325002>",

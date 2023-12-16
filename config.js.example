@@ -31,7 +31,7 @@ module.exports = {
     DEFAULT: !process.env.DEBUG ? "DEFAULT_PREFIX" : "DEBUG_PREFIX"
   },
   EMBED_COLORS: {
-    BOT_EMBED: "#F5DE43",
+    DEFAULT: "#F5DE43",
     SUCCESS: "#00A56A",
     ERROR: "#D61A3C",
     WARNING: "#F7E919",

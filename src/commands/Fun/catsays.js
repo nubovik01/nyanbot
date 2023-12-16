@@ -15,8 +15,10 @@ const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
-    content: oneLine`Вы не указали текст, который требуется наложить на картинку с котиком.
-    Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+    content: oneLine`
+      Вы не указали текст, который требуется наложить на картинку с котиком.
+      Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`
+    `
   });
 
   const picture = await fetch("https://cataas.com/cat/says/" + args.join(" "));
