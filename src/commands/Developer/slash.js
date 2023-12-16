@@ -245,6 +245,10 @@ module.exports.run = async (client, message, db, args) => {
         name: 'source',
         description: `Получить ссылку на открытый исходный код ${BOT_NAME} на GitHub`
       },
+      {
+        name: 'botinfo',
+        description: `Получить актуальную информацию о боте`
+      },
     ]);
 
     return message.channel.send({ content: "Slash-команды обновлены глобально." });
