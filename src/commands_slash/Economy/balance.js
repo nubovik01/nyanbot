@@ -10,9 +10,12 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const emojis = require('../../../emojis.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
-  const targetUser = (arguments.length !== 0 && /\d{18}/gm.test(arguments[0]) ? { id: arguments[0] } : interaction.user);
+  const targetUser = arguments.length !== 0 && /\d{18}/gm.test(arguments[0])
+    ? { id: arguments[0] }
+    : interaction.user;
 
   if (!await db.checkUserExistence(targetUser.id)) return interaction.reply({
     content: "Невозможно проверить баланс! Выбранный Вами пользователь ни разу не пользовался ботом."
@@ -22,7 +25,10 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
   const balance = await user.getCoins();
 
   return interaction.reply({
-    content: `У **${await user.getDiscordNickname()}** на балансе \`${balance}\` ${emojis.DEFAULT.EURO} прямо сейчас.`
+    content: oneLine`
+      У пользователя **${await user.getDiscordNickname()}**
+      на балансе \`${balance}\` ${emojis.DEFAULT.EURO} прямо сейчас.
+    `
   });
 };
 

@@ -22,7 +22,9 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
     content: "Для полноценной работы данной slash-команды требуется указать все аргументы."
   });
 
-  const server = (arguments[0] == '-s' || !arguments[0]) ? interaction.guild : client.guilds.cache.get(arguments[0]);
+  const server = (arguments[0] == '-s' || !arguments[0])
+    ? interaction.guild
+    : client.guilds.cache.get(arguments[0]);
 
   if (server == undefined) return interaction.reply({ content: "Я не смог найти сервер с таким ID :(" });
 

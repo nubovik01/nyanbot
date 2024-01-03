@@ -12,13 +12,15 @@
 const { stripIndents } = require("common-tags");
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
-  const user = await db.getUser(arguments[0] || interaction.user.id);
-  const userLastUsedCommand = await user.getDateOfLastUsedCommand();
-  const userLastUsedSlashCommand = await user.getDateOfLastUsedSlashCommand();
-  const userDiscordNickname = await user.getDiscordNickname() || "не записан";
+  const user = await db.getUser(targetUser.id);
 
+  const userLastUsedCommand = await user.getDateOfLastUsedCommand();
   const userLastUsedCommandText = userLastUsedCommand ? `<t:${userLastUsedCommand}:R>` : "[никогда]";
+
+  const userLastUsedSlashCommand = await user.getDateOfLastUsedSlashCommand();
   const userLastUsedSlashCommandText = userLastUsedSlashCommand ? `<t:${userLastUsedSlashCommand}:R>` : "[никогда]";
+
+  const userDiscordNickname = await user.getDiscordNickname() || "не записан";
 
   return interaction.reply({
     content: stripIndents`

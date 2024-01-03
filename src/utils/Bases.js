@@ -56,7 +56,10 @@ class BaseConnection {
       } catch (error) {
         console.error("Two or more database queries occurred synchronously! (js lore)");
       };
-      user = ResponseParser.parse(User.prototype, (await con.query("SELECT * FROM users WHERE id = $1 LIMIT 1;", [id.toString()])).rows[0]);
+      user = ResponseParser.parse(
+        User.prototype,
+        (await con.query("SELECT * FROM users WHERE id = $1 LIMIT 1;", [id.toString()])).rows[0]
+      );
     } else {
       user = ResponseParser.parse(User.prototype, result.rows[0]);
     };

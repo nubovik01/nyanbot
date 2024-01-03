@@ -10,10 +10,14 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { PREFIXES, BOT_NAME } = require('../../../config.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
-    content: `Вы не указали какое действие требуется произвести с slash-командами. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+    content: oneLine`
+      Вы не указали какое действие требуется произвести с slash-командами.
+      Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`
+    `
   });
 
   if (["post", "update", "обновить", "опубликовать"].includes(args[0])) {
@@ -260,7 +264,9 @@ module.exports.run = async (client, message, db, args) => {
     return message.channel.send({ content: "Slash-команды удалены глобально." });
   };
 
-  return message.channel.send({ content: `Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`` });
+  return message.channel.send({
+    content: `Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+  });
 };
 
 module.exports.help = {

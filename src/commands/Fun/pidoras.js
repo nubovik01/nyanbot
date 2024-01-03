@@ -10,10 +10,14 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { PREFIXES } = require('../../../config.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
-    content: `Ты не указал, кого надо назвать пидорасом. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+    content: oneLine`
+      Ты не указал, кого надо назвать пидорасом.
+      Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`
+    `
   });
 
   if (['rldv1', 'royaledev', 'рояль', 'рлдв1'].some(value => args.includes(value))) return message.channel.send({
@@ -22,7 +26,10 @@ module.exports.run = async (client, message, db, args) => {
 
   if (['-plural', '-p', '-мнч', '-мн.ч.', '-мн.чис.', '-множ.ч.', '-множ.чис.'].includes(args[0])) {
     if (!args[1]) return message.channel.send({
-      content: `Ты не указал, кого надо назвать пидорасом. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+      content: oneLine`
+        Ты не указал, кого надо назвать пидорасом.
+        Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`
+      `
     });
 
     return message.channel.send({ content: `${args[1]} пидорасы ебаные.` });

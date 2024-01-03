@@ -10,13 +10,17 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { EMBED_COLORS, OWNER_IDS, BOT_NAME, TELEGRAM_CHANNEL, SUPPORT_SERVER, GITHUB_REPO } = require('../../../config.js');
+const {
+  EMBED_COLORS, SUPPORT_SERVER, TELEGRAM_CHANNEL,
+  BOT_NAME, PREFIXES, OWNER_IDS, GITHUB_REPO
+} = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, interaction, command, subCommand, db, arguments) => {
   if (arguments[0]) {
-    const command = client.slashCommands.get(arguments[0]) || client.slashCommands.get(client.commandsAliases.get(arguments[0]));
+    const command = client.slashCommands.get(arguments[0])
+      || client.slashCommands.get(client.commandsAliases.get(arguments[0]));
 
     if ((command == 'undefined' || command == undefined || command == NaN)) return interaction.reply({
       content: "Мявк! Кажется, такая команда не существует."
@@ -89,12 +93,16 @@ module.exports.run = async (client, interaction, command, subCommand, db, argume
       },
       {
         name: `${emojis.DEFAULT.COMPUTER} . Для разработчиков (**${commandsList.get('dev').length}**)`,
-        value: `${OWNER_IDS.includes(interaction.user.id) ? `\`/${commandsList.get('dev').join(`\`, \`/`)}\`` : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
+        value: `${OWNER_IDS.includes(interaction.user.id)
+          ? `\`/${commandsList.get('dev').join(`\`, \`/`)}\``
+          : `*Список dev-команд доступен только разработчикам ${BOT_NAME}.*`}`,
         inline: false
       },
       {
         name: `${emojis.DEFAULT.NSFW} . NSFW (**${commandsList.get('nsfw').length}**)`,
-        value: `${interaction.channel.nsfw ? `\`/${commandsList.get('nsfw').join(`\`, \`/`)}\`` : "*Список доступен только в NSFW-канале.*"}`,
+        value: `${interaction.channel.nsfw
+          ? `\`/${commandsList.get('nsfw').join(`\`, \`/`)}\``
+          : "*Список доступен только в NSFW-канале.*"}`,
         inline: false
       }
     ]);

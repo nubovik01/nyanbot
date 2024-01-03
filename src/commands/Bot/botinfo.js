@@ -10,7 +10,10 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { EmbedBuilder } = require("discord.js");
-const { BOT_NAME, EMBED_COLORS, VERSION_MANAGEMENT_SYMBOL, PREFIXES, SUPPORT_SERVER, TELEGRAM_CHANNEL, GITHUB_REPO } = require('../../../config.js');
+const {
+  EMBED_COLORS, PREFIXES, GITHUB_REPO, TELEGRAM_CHANNEL,
+  VERSION_MANAGEMENT_SYMBOL, SUPPORT_SERVER, BOT_NAME,
+} = require('../../../config.js');
 const emojis = require('../../../emojis.js');
 const { version, dependencies } = require('../../../package.json');
 const { stripIndent, oneLine } = require('common-tags');
@@ -31,8 +34,7 @@ module.exports.run = async (client, message, db, args) => {
 
       Количество команд: \`${client.commands.size}\` (алиасов: \`${client.commandsAliases.size}\`)
       Количество slash-команд: \`${client.slashCommands.size}\`
-    `
-    )
+    `)
     .setFields([
       {
         name: `${emojis.DEFAULT.LINK} . Ресурсы бота`,

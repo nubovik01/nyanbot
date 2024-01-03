@@ -91,7 +91,9 @@ module.exports = class User {
 
   async updateCommandsUsages(value) {
     const newValue = this._commandsUsages + Number.parseInt(value);
-    await require('./Bases.js').instance.query("UPDATE users SET \"commandsUsages\" = $1 WHERE id = $2;", [newValue, this._id]);
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"commandsUsages\" = $1 WHERE id = $2;", [newValue, this._id]
+    );
     this._commandsUsages = newValue;
   };
 
@@ -101,7 +103,9 @@ module.exports = class User {
 
   async setDateOfLastUsedCommand(value) {
     const newValue = Number.parseInt(value);
-    await require('./Bases.js').instance.query("UPDATE users SET \"dateOfLastUsedCommand\" = $1 WHERE id = $2;", [newValue, this._id]);
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"dateOfLastUsedCommand\" = $1 WHERE id = $2;", [newValue, this._id]
+    );
     this._dateOfLastUsedCommand = newValue;
   };
 
@@ -111,7 +115,9 @@ module.exports = class User {
 
   async updateSlashCommandsUsages(value) {
     const newValue = this._slashCommandsUsages + Number.parseInt(value);
-    await require('./Bases.js').instance.query("UPDATE users SET \"slashCommandsUsages\" = $1 WHERE id = $2;", [newValue, this._id]);
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"slashCommandsUsages\" = $1 WHERE id = $2;", [newValue, this._id]
+    );
     this._slashCommandsUsages = newValue;
   };
 
@@ -121,7 +127,9 @@ module.exports = class User {
 
   async setDateOfLastUsedSlashCommand(value) {
     const newValue = Number.parseInt(value);
-    await require('./Bases.js').instance.query("UPDATE users SET \"dateOfLastUsedSlashCommand\" = $1 WHERE id = $2;", [newValue, this._id]);
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"dateOfLastUsedSlashCommand\" = $1 WHERE id = $2;", [newValue, this._id]
+    );
     this._dateOfLastUsedSlashCommand = newValue;
   };
 
@@ -130,9 +138,11 @@ module.exports = class User {
   };
 
   async changeDeveloper(value) {
-    if(![true, false].includes(value)) throw new Error("The value must contain \"true\" or \"false\"");
- 
-    await require('./Bases.js').instance.query("UPDATE users SET \"developer\" = $1 WHERE id = $2;", [value, this._id]);
+    if (![true, false].includes(value)) throw new Error("The value must contain \"true\" or \"false\"");
+
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"developer\" = $1 WHERE id = $2;", [value, this._id]
+    );
     this._developer = value;
   };
 
@@ -141,6 +151,8 @@ module.exports = class User {
   };
 
   async setDiscordNickname(value) {
-    await require('./Bases.js').instance.query("UPDATE users SET \"discordNickname\" = $1 WHERE id = $2;", [value, this._id]);
+    await require('./Bases.js').instance.query(
+      "UPDATE users SET \"discordNickname\" = $1 WHERE id = $2;", [value, this._id]
+    );
   };
 };

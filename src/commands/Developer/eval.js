@@ -10,10 +10,14 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const { PREFIXES } = require('../../../config.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, message, db, args) => {
   if (!args[0]) return message.channel.send({
-    content: `Ты не указал код, который требуется выполнить. Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\``
+    content: oneLine`
+      Ты не указал код, который требуется выполнить.
+      Пример использования команды: \`${PREFIXES.DEFAULT}help ${this.help.name}\`
+    `
   });
 
   return new Promise((async resolver => {
@@ -22,7 +26,9 @@ module.exports.run = async (client, message, db, args) => {
 
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
-      await message.channel.send({ content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\`` });
+      await message.channel.send({
+        content: `**\`[evaled.length: ${evaled.length}]\`** \`\`\`xl\n${evaled}\n\`\`\``
+      });
 
       resolver();
     } catch (error) {

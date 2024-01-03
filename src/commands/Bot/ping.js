@@ -10,15 +10,22 @@
 // (c) qwkrtezzz (https://github.com/nubovik01)
 
 const emojis = require('../../../emojis.js');
+const { oneLine } = require('common-tags');
 
 module.exports.run = async (client, message, db, args) => {
   const messageSendingTime = Date.now() - message.createdTimestamp;
 
-  return message.channel.send({ content: `Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}` }).then(async(resultMessage) => {
-    resultMessage.edit({
-      content: `Pong! Websocket — ${client.ws.ping} мс, БД — ${await db.getPing()} мс, отправка сообщения заняла ${messageSendingTime} мс.`
+  return message.channel.send({ content: `Измеряю задержку... ${emojis.DEFAULT.SEARCH_RIGHT}` })
+    .then(async (resultMessage) => {
+      resultMessage.edit({
+        content: oneLine`
+          Pong!
+          Websocket — ${client.ws.ping} мс,
+          БД — ${await db.getPing()} мс,
+          отправка сообщения заняла ${messageSendingTime} мс.
+        `
+      });
     });
-  });
 };
 
 module.exports.help = {

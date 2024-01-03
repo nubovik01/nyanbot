@@ -11,8 +11,11 @@
 
 module.exports = (command = "") => {
   if (command.indexOf(" ") === -1) return [];
+
   command = command.substring(command.indexOf(" ") + 1);
+
   const arguments = command.match(/("( *[^ "]* *)*")+|([^ "]+)+/gmiu);
   if (arguments == null) return [];
+
   return arguments.map(argument => argument.split("\"").join(""));
 };
