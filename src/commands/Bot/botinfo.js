@@ -57,7 +57,7 @@ module.exports.run = async (client, message, db, args) => {
         inline: false
       },
       {
-        name: `${emojis.DEFAULT.SETTINGS} Версии зависимостей`,
+        name: `${emojis.DEFAULT.SETTINGS} . Версии зависимостей`,
         value: stripIndent`
           ${BOT_NAME} ${emojis.DEFAULT.CAT}: v${botVersion}
           Node.JS ${emojis.CUSTOM.NODEJS}: ${process.version}
