@@ -20,10 +20,6 @@ module.exports.run = async (client, message, db, args) => {
     `
   });
 
-  if (['rldv1', 'royaledev', 'рояль', 'рлдв1'].some(value => args.includes(value))) return message.channel.send({
-    content: "рояль няшк<3"
-  }); // easter egg
-
   if (['-plural', '-p', '-мнч', '-мн.ч.', '-мн.чис.', '-множ.ч.', '-множ.чис.'].includes(args[0])) {
     if (!args[1]) return message.channel.send({
       content: oneLine`
