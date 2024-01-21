@@ -1,6 +1,6 @@
 {
   "name": "nyanbot",
-  "version": "0.4.9.b5",
+  "version": "0.4.9.b12",
   "description": "Bot for Discord",
   "main": "./main.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "discord",
     "bot"
   ],
-  "author": "Nikita A. <https://t.me/nktdev> (https://github.com/nubovik01)",
+  "author": "Nikita A. <https://t.me/nktdev> (https://nubovik01.github.io/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nubovik01/nyanbot/issues"
